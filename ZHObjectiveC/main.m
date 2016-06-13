@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ZHCreature.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        NSLog(@"Hello, World!");
+        [ZHCreature sayHello];
+        [[NSArray alloc] init];
+        
+        id pers = [[ZHCreature alloc] initWithName:@"pers"];
+        [pers sayPersonalHello];
     }
     return 0;
 }
