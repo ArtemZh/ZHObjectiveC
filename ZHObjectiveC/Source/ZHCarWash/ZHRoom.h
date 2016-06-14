@@ -15,11 +15,7 @@
 
 @property (nonatomic, readonly) NSArray *workers ;
 
-- (instancetype)initWithAccountant:(ZHAccountant *)accountant boss:(ZHBoss *)boss;
-
 - (void)addWorker:(id)worker;
 - (void)removeWorker:(id)worker;
-
-
 
 @end

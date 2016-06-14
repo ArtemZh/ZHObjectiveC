@@ -13,5 +13,6 @@
 
 - (ZHCreature *)giveBirthWithFather:(ZHCreatureMale *)father andChildName:(NSString *)childName;
 - (void)performGenderSpecificOperation;
+- (ZHCreature *)giveBirth;
 
 @end

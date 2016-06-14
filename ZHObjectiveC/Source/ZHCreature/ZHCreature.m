@@ -6,7 +6,6 @@
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
-
 #import "ZHCreature.h"
 
 static NSString * const kZHHellow = @"Hellow";
@@ -19,15 +18,15 @@ static NSString * const kZHHellow = @"Hellow";
 
 @implementation ZHCreature
 
-@synthesize secondName = _secondName;
-
-- (NSString *)secondName{
-    return _secondName;
-}
-
-- (void)setSName:(NSString *)secondName {
-    _secondName = secondName;
-}
+//@synthesize secondName = _secondName;
+//
+//- (NSString *)secondName{
+//    return _secondName;
+//}
+//
+//- (void)setSecondName:(NSString *)secondName {
+//    _secondName = secondName;
+//}
 
 @dynamic children;
 
@@ -48,13 +47,8 @@ static NSString * const kZHHellow = @"Hellow";
 
 }
 
-
 + (void)sayHello {
     NSLog(@"hello");
-}
-
-- (void)sayPersonalHello {
-    NSLog(@"PiHello");
 }
 
 #pragma mark -
@@ -66,6 +60,10 @@ static NSString * const kZHHellow = @"Hellow";
 
 #pragma mark -
 #pragma mark Public implementation
+
+- (void)sayPersonalHello {
+    NSLog(@"PiHello");
+}
 
 - (void)addChild:(ZHCreature *)creature {
     NSMutableArray *children = self.mutableChildren;

@@ -1,21 +1,20 @@
 //
-//  ZHBilding.m
+//  ZHBuilding.m
 //  ZHObjectiveC
 //
 //  Created by Artem Zhavrotskiy on 12.06.16.
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
-#import "ZHBilding.h"
+#import "ZHBuilding.h"
 #import "NSObject+ZHExtension.h"
 
-@interface ZHBilding()
+@interface ZHBuilding()
 @property (nonatomic, retain) NSMutableArray *mutablerooms;
 
 @end
 
-
-@implementation ZHBilding
+@implementation ZHBuilding
 
 @dynamic rooms;
 

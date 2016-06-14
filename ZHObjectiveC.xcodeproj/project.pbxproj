@@ -12,7 +12,7 @@
 		ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FA1D0DA64600B83075 /* ZHCreature.m */; };
 		ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FC1D0DA64600B83075 /* ZHCreatureFemale.m */; };
 		ACFC34011D0DA64600B83075 /* ZHCreatureMale.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FE1D0DA64600B83075 /* ZHCreatureMale.m */; };
-		ACFC34061D0DA6A500B83075 /* ZHBilding.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC34051D0DA6A500B83075 /* ZHBilding.m */; };
+		ACFC34061D0DA6A500B83075 /* ZHBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC34051D0DA6A500B83075 /* ZHBuilding.m */; };
 		ACFC34091D0DA75100B83075 /* ZHRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC34081D0DA75100B83075 /* ZHRoom.m */; };
 		ACFC340C1D0DAAA900B83075 /* ZHBox.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC340B1D0DAAA900B83075 /* ZHBox.m */; };
 		ACFC34121D0DACB200B83075 /* ZHCar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC34111D0DACB200B83075 /* ZHCar.m */; };
@@ -46,8 +46,8 @@
 		ACFC33FC1D0DA64600B83075 /* ZHCreatureFemale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCreatureFemale.m; sourceTree = "<group>"; };
 		ACFC33FD1D0DA64600B83075 /* ZHCreatureMale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCreatureMale.h; sourceTree = "<group>"; };
 		ACFC33FE1D0DA64600B83075 /* ZHCreatureMale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCreatureMale.m; sourceTree = "<group>"; };
-		ACFC34041D0DA6A500B83075 /* ZHBilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBilding.h; sourceTree = "<group>"; };
-		ACFC34051D0DA6A500B83075 /* ZHBilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHBilding.m; sourceTree = "<group>"; };
+		ACFC34041D0DA6A500B83075 /* ZHBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBuilding.h; sourceTree = "<group>"; };
+		ACFC34051D0DA6A500B83075 /* ZHBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHBuilding.m; sourceTree = "<group>"; };
 		ACFC34071D0DA75100B83075 /* ZHRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHRoom.h; sourceTree = "<group>"; };
 		ACFC34081D0DA75100B83075 /* ZHRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRoom.m; sourceTree = "<group>"; };
 		ACFC340A1D0DAAA900B83075 /* ZHBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBox.h; sourceTree = "<group>"; };
@@ -146,22 +146,22 @@
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
 				ACFC34111D0DACB200B83075 /* ZHCar.m */,
 				ACFC34141D0DAE1300B83075 /* ZHWorkers */,
-				ACFC34031D0DA67A00B83075 /* ZHBildings */,
+				ACFC34031D0DA67A00B83075 /* ZHBuilding */,
 			);
 			path = ZHCarWash;
 			sourceTree = "<group>";
 		};
-		ACFC34031D0DA67A00B83075 /* ZHBildings */ = {
+		ACFC34031D0DA67A00B83075 /* ZHBuilding */ = {
 			isa = PBXGroup;
 			children = (
-				ACFC34041D0DA6A500B83075 /* ZHBilding.h */,
-				ACFC34051D0DA6A500B83075 /* ZHBilding.m */,
+				ACFC34041D0DA6A500B83075 /* ZHBuilding.h */,
+				ACFC34051D0DA6A500B83075 /* ZHBuilding.m */,
 				ACFC34071D0DA75100B83075 /* ZHRoom.h */,
 				ACFC34081D0DA75100B83075 /* ZHRoom.m */,
 				ACFC340A1D0DAAA900B83075 /* ZHBox.h */,
 				ACFC340B1D0DAAA900B83075 /* ZHBox.m */,
 			);
-			name = ZHBildings;
+			name = ZHBuilding;
 			sourceTree = "<group>";
 		};
 		ACFC34141D0DAE1300B83075 /* ZHWorkers */ = {
@@ -237,7 +237,7 @@
 			files = (
 				ACFC341D1D0DB10700B83075 /* ZHAccountant.m in Sources */,
 				ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */,
-				ACFC34061D0DA6A500B83075 /* ZHBilding.m in Sources */,
+				ACFC34061D0DA6A500B83075 /* ZHBuilding.m in Sources */,
 				ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */,
 				AC18A4501D09D3CD001A9D81 /* main.m in Sources */,
 				ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */,

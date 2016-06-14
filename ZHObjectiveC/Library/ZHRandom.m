@@ -11,7 +11,7 @@
 NSInteger ZHRandomIntegerWithRange(NSInteger min, NSInteger max) {
     ZHIntegerRange range = ZHIntegerRangeCreate(min, max);
     
-    return range.min + arc4random()%(range.max - range.min);
+    return range.min + (arc4random_uniform((u_int32_t)(range.max - range.min)));
 }
 
 NSUInteger ZHRandomUnsignedInteget(NSUInteger value) {

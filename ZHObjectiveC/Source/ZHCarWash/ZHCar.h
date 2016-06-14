@@ -10,12 +10,10 @@
 
 #import <Foundation/Foundation.h>
 
-
 typedef enum {
     ZHCarDirty,
     ZHCarClean
 } ZHCarStatus;
-
 
 @interface ZHCar : NSObject<ZHMoneyTransferProtocol>
 @property (nonatomic, assign) ZHCarStatus status;
