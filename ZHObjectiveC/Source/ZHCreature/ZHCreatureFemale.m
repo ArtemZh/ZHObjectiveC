@@ -18,17 +18,7 @@
     NSLog(@"%@ - Give birth" , self.name);
     ZHCreature *child = [ZHCreature object];
     [self addChild:child];
-
-    return child;
-}
-
-- (ZHCreature *)giveBirthWithFather:(ZHCreatureMale *)father andChildName:(NSString *)childName {
-    ZHCreature *child = [self giveBirth];
-    child.name = childName;
-    
-    [self addChild:child];
-    [father addChild:child];
-    
+    child.name = @"child";
     return child;
 }
 

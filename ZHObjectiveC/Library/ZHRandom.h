@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 typedef struct {
     NSInteger min;
     NSInteger max;
@@ -22,10 +21,10 @@ ZHIntegerRange ZHIntegerRangeCreate(NSInteger firstValue, NSInteger secondValue)
     
     return range;
 }
-// genarate random number between (min, max -1)
+// generate random number between (min, max -1)
 NSInteger ZHRandomIntegerWithRange(NSInteger min, NSInteger max);
 
-// genarate random number between (min, max -1)
+// generate random number between (min, max -1)
 NSUInteger ZHRandomUnsignedInteget(NSUInteger value);
 
 BOOL ZHRandomBool(void);

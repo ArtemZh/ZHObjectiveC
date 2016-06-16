@@ -8,7 +8,7 @@
 
 #import "ZHCreature.h"
 
-static NSString * const kZHHellow = @"Hello";
+static NSString * const kZHHello = @"Hello";
 
 @interface ZHCreature ()
 @property (nonatomic, retain) NSMutableArray *mutableChildren;
@@ -35,6 +35,13 @@ static NSString * const kZHHellow = @"Hello";
     self.mutableChildren = nil;
     
     [super dealloc];
+}
+
+- (instancetype)init {
+    self = [super init];
+    self.mutableChildren = [NSMutableArray object];
+        
+    return self;
 }
 
 - (instancetype)initWithName:(NSString*) name {
@@ -76,7 +83,7 @@ static NSString * const kZHHellow = @"Hello";
 }
 
 - (void)saySomething {
-    NSLog(@"%@", kZHHellow);
+    NSLog(@"%@ %@", kZHHello, self.name);
 }
 
 - (void)familySayHi {

@@ -13,14 +13,12 @@
 
 #import <Foundation/Foundation.h>
 
-static const NSUInteger kZHAmountOfChildren = 2;
-
 @implementation ZHCreatureTest
 
 -(void)ZHCreatureTest {
     NSMutableArray *creatures = [NSMutableArray object];
     
-    ZHCreatureMale *creature = [ZHCreatureMale object];
+    ZHCreature *creature = [ZHCreatureMale object];
     creature.name = @"Papa";
     [creatures addObject:creature];
     
@@ -28,31 +26,28 @@ static const NSUInteger kZHAmountOfChildren = 2;
     creature.name = @"Papa2";
     [creatures addObject:creature];
     
-    ZHCreatureFemale *creature2 = [ZHCreatureFemale object];
-    creature2.name = @"Mama";
-    [creatures addObject:creature2];
+    creature = [ZHCreatureFemale object];
+    creature.name = @"Mama";
+    [creatures addObject:creature];
     
-    creature2 = [ZHCreatureFemale object];
-    creature2.name = @"Mama2";
-    [creatures addObject:creature2];
+    creature = [ZHCreatureFemale object];
+    creature.name = @"Mama2";
+    [creatures addObject:creature];
     
 //    for (uint8_t iterator = 0; iterator < creatures.count - 1; iterator++) {
-//        for (uint8_t i = 0; i < kZHAmountOfChildren; iterator++) {
-//            [creature addChild:creatures[iterator]];
-//        }
+//        [creature addChild:creatures[iterator]];
 //    }
     
-    for (uint8_t iterator = 0; iterator < creatures.count - 1; iterator++) {
-        [creature addChild:creatures[iterator]];
-    }
-    
-    
     for (ZHCreature *creature in creatures) {
-        [creature familySayHi];
+        [creature addChild:creature];
     }
     
     for (ZHCreature *creature in creatures) {
         [creature performGenderSpecificOperation];
+    }
+    
+    for (ZHCreature *creature in creatures) {
+        [creature familySayHi];
     }
 }
 

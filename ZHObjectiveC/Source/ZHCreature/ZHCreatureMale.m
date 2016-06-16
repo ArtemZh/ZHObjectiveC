@@ -18,6 +18,4 @@
 - (void)performGenderSpecificOperation {
     [self goFight];
 }
-
-
 @end

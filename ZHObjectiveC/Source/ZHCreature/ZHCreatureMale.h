@@ -19,7 +19,5 @@ typedef enum {
 @property (nonatomic, assign)   NSUInteger              winsCount;
 
 - (void)goFight;
-- (void)performGenderSpecificOperation;
-
 
 @end

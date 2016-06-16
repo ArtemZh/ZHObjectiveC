@@ -11,7 +11,7 @@
 
 @interface ZHCreatureFemale : ZHCreature
 
-- (ZHCreature *)giveBirthWithFather:(ZHCreatureMale *)father andChildName:(NSString *)childName;
+//- (ZHCreature *)giveBirthWithFather:(ZHCreatureMale *)father andChildName:(NSString *)childName;
 - (void)performGenderSpecificOperation;
 - (ZHCreature *)giveBirth;
 

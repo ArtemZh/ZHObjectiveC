@@ -19,8 +19,12 @@ NSUInteger ZHRandomUnsignedInteget(NSUInteger value) {
 }
 
 BOOL ZHRandomBool(void) {
-    return arc4random()%2;
+    return arc4random() % 2;
 }
 
 
 
+//for (int i = 0; i < 10; i++){
+//    NSString *letter = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
+//    NSLog(@"%@", letter);
+//}
