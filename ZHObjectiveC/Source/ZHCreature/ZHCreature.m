@@ -8,7 +8,7 @@
 
 #import "ZHCreature.h"
 
-static NSString * const kZHHellow = @"Hellow";
+static NSString * const kZHHellow = @"Hello";
 
 @interface ZHCreature ()
 @property (nonatomic, retain) NSMutableArray *mutableChildren;
@@ -66,19 +66,13 @@ static NSString * const kZHHellow = @"Hellow";
 }
 
 - (void)addChild:(ZHCreature *)creature {
-    NSMutableArray *children = self.mutableChildren;
-    
-    if(![children containsObject:creature]) {
-        [children addObject:creature];
+    if (creature) {
+        [self.mutableChildren addObject:creature];
     }
 }
 
 - (void)removeChild:(ZHCreature *)creature {
-    NSMutableArray *children = self.mutableChildren;
-    
-    if ([children containsObject:creature]) {
-        [children removeObject:creature];
-    }
+    [self.mutableChildren removeObject:creature];
 }
 
 - (void)saySomething {
@@ -102,8 +96,5 @@ static NSString * const kZHHellow = @"Hellow";
 - (void)performGenderSpecificOperation {
     NSLog(@"SpecificOperation");
 }
-
-
-
 
 @end

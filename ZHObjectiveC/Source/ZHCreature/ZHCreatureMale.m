@@ -11,7 +11,7 @@
 @implementation ZHCreatureMale
 
 - (void)goFight {
-    self.amountWins = -1 + arc4random_uniform(ZHCreatureWin);
+    //self.winsCount = -1 + arc4random_uniform(ZHCreatureWin);
     NSLog(@"%@ - Go fight", self.name);
 }
 

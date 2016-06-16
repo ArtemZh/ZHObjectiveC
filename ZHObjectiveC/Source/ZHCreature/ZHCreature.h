@@ -10,13 +10,11 @@
 
 #import <Foundation/Foundation.h>
 
-
 typedef enum {
     ZHCreatureGenderUndefined,
     ZHCreatureGenderMale,
     ZHCreatureGenderFemale
 } ZHCreatureGender;
-
 
 @interface ZHCreature : NSObject
 
@@ -41,6 +39,5 @@ typedef enum {
 - (void)familySayHi;
 
 - (void)performGenderSpecificOperation;
-
 
 @end

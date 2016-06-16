@@ -8,15 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "ZHCreature.h"
+#import "ZHCreatureTest.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        [ZHCreature sayHello];
-        [[NSArray alloc] init];
         
-        id pers = [[ZHCreature alloc] initWithName:@"pers"];
-        [pers sayPersonalHello];
+        ZHCreatureTest *test = [[ZHCreatureTest new] autorelease];
+        
+        [test ZHCreatureTest];
+        
     }
+    
     return 0;
 }

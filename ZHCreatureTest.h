@@ -6,8 +6,8 @@
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
-#ifndef ZHCreatureTest_h
-#define ZHCreatureTest_h
+@interface ZHCreatureTest : ZHCreature
 
+-(void)ZHCreatureTest;
 
-#endif /* ZHCreatureTest_h */
+@end

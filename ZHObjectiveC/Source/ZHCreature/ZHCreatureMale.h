@@ -16,7 +16,7 @@ typedef enum {
 
 @interface ZHCreatureMale : ZHCreature
 
-@property (nonatomic, assign)   NSUInteger              amountWins;
+@property (nonatomic, assign)   NSUInteger              winsCount;
 
 - (void)goFight;
 - (void)performGenderSpecificOperation;
