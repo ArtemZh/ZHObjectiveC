@@ -18,16 +18,6 @@ static NSString * const kZHHello = @"Hello";
 
 @implementation ZHCreature
 
-//@synthesize secondName = _secondName;
-//
-//- (NSString *)secondName{
-//    return _secondName;
-//}
-//
-//- (void)setSecondName:(NSString *)secondName {
-//    _secondName = secondName;
-//}
-
 @dynamic children;
 
 - (void)dealloc {
@@ -45,13 +35,12 @@ static NSString * const kZHHello = @"Hello";
 }
 
 - (instancetype)initWithName:(NSString*) name {
-    self = [super init];
+    self = [self init];
     
     self.name = name;
     self.mutableChildren = [NSMutableArray object];
     
     return self;
-
 }
 
 + (void)sayHello {
@@ -103,5 +92,15 @@ static NSString * const kZHHello = @"Hello";
 - (void)performGenderSpecificOperation {
     NSLog(@"SpecificOperation");
 }
+
+//@synthesize secondName = _secondName;
+//
+//- (NSString *)secondName{
+//    return _secondName;
+//}
+//
+//- (void)setSecondName:(NSString *)secondName {
+//    _secondName = secondName;
+//}
 
 @end

@@ -11,22 +11,25 @@
 typedef struct {
     NSInteger min;
     NSInteger max;
-} ZHIntegerRange;
+} ZHIntegerGap;
 
-static inline
-ZHIntegerRange ZHIntegerRangeCreate(NSInteger firstValue, NSInteger secondValue) {
-    ZHIntegerRange range;
-    range.min = MIN(firstValue, secondValue);
-    range.max = MAX(firstValue, secondValue);
-    
-    return range;
-}
-// generate random number between (min, max -1)
-NSInteger ZHRandomIntegerWithRange(NSInteger min, NSInteger max);
+typedef enum {
+    ZHLost,
+    ZHDrow,
+    ZHWin
+} ZHCompetitionResult;
 
-// generate random number between (min, max -1)
-NSUInteger ZHRandomUnsignedInteget(NSUInteger value);
+
+NSUInteger ZHRandomPositivIntegerWithLimitValue(NSUInteger value);
+
+NSInteger ZHRandomIntegerWithinGivenLimits(NSInteger value1, NSInteger value2);
 
 BOOL ZHRandomBool(void);
 
+ZHCompetitionResult ZHRandomСompetitionResult(void);
 
+@interface ZHRandom : NSObject 
+
++ ZHRandomString:(NSMutableString *)string withSize:(NSUInteger)value;
+
+@end

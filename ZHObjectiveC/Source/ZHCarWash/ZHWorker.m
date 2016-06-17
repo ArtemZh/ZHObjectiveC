@@ -25,7 +25,7 @@
 
 - (instancetype)init {
     self = [super init];
-    self.yearsOfExperience = ZHRandomIntegerWithRange(1, 5);
+    self.yearsOfExperience = ZHRandomIntegerWithinGivenLimits(1, 5);
     
     return self;
 }
