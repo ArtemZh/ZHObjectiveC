@@ -15,4 +15,8 @@
     car.status = ZHCarClean;
 }
 
+- (void)processObject:(id)object {
+    [self washCar:object];
+}
+
 @end

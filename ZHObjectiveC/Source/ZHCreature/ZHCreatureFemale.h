@@ -8,11 +8,9 @@
 
 #import "ZHCreatureMale.h"
 
-
+static NSString * const kZHDefoultChildName = @"child";
 @interface ZHCreatureFemale : ZHCreature
 
-//- (ZHCreature *)giveBirthWithFather:(ZHCreatureMale *)father andChildName:(NSString *)childName;
-- (void)performGenderSpecificOperation;
 - (ZHCreature *)giveBirth;
 
 @end

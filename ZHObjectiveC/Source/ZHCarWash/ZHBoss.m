@@ -10,8 +10,13 @@
 
 @implementation ZHBoss
 
-- (void)takedMoneyFromAccountanManagers {
-    NSLog(@"%f Taked money from accountan managers ", self.money);
+- (void)calculateProfit {
+    NSLog(@"Profit = %f", self.money);
+}
+
+- (void)processObject:(id)object {
+    [self takeMoneyFromObject:object];
+    [self calculateProfit];
 }
 
 @end

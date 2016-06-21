@@ -10,22 +10,22 @@
 
 
 
-ZHIntegerGap ZHIntegerGapCreate(NSInteger value1, NSInteger value2) {
-    ZHIntegerGap gap;
+ZHIntegerRange ZHIntegerRangeCreate(NSInteger value1, NSInteger value2) {
+    ZHIntegerRange range;
     
-    gap.min = MIN(value1, value2);
-    gap.max = MAX(value1, value2);
+    range.min = MIN(value1, value2);
+    range.max = MAX(value1, value2);
     
-    return gap;
+    return range;
 }
 
 NSInteger ZHRandomIntegerWithinGivenLimits(NSInteger value1, NSInteger value2) {
-    ZHIntegerGap gap = ZHIntegerGapCreate(value1, value2);
+    ZHIntegerRange range = ZHIntegerRangeCreate(value1, value2);
     
-    return gap.min + (arc4random_uniform((u_int32_t)(gap.max - gap.min)));
+    return range.min + (arc4random_uniform((u_int32_t)(range.max - range.min)));
 }
 
-NSUInteger ZHRandomPositivIntegerWithLimitValue(NSUInteger value) {
+NSUInteger ZHRandomIntegerWithLimitValue(NSUInteger value) {
     return ZHRandomIntegerWithinGivenLimits (0, value);
 }
 
@@ -37,20 +37,4 @@ ZHCompetitionResult ZHRandomСompetitionResult() {
     return arc4random_uniform(ZHWin);
 }
 
-@implementation ZHRandom
 
-+ ZHRandomString:(NSMutableString *)string withSize:(NSUInteger)value {
-    NSMutableString *string2 = [NSMutableString stringWithCapacity:value];
-    
-    for (int i = 0; i < value; i++){
-        
-        NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
-        [string2 appendString:symbols];
-    }
-
-    NSLog(@"%@", string2);
-    
-    return string;
-}
-
-@end

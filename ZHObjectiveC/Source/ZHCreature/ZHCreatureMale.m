@@ -11,11 +11,11 @@
 @implementation ZHCreatureMale
 
 - (void)goFight {
-    self.winsCount = -1 + arc4random_uniform(ZHCreatureWin);
     NSLog(@"%@ - Go fight", self.name);
 }
 
 - (void)performGenderSpecificOperation {
     [self goFight];
 }
+
 @end

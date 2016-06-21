@@ -10,6 +10,6 @@
 
 @interface ZHBoss : ZHWorker
 
-- (void)takedMoneyFromAccountanManagers;
+- (void)calculateProfit;
 
 @end

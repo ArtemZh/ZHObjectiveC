@@ -11,7 +11,6 @@
 
 @interface ZHAccountant : ZHWorker
 
-- (void)takedMoneyFromWorker;
+- (void)calculateMoney;
 
 @end
-

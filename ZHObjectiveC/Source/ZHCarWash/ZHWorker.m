@@ -47,4 +47,8 @@
     [self receiveMoney:money];
 }
 
+- (void)processObject:(id)object {
+   ///
+}
+
 @end

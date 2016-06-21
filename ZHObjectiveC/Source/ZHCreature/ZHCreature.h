@@ -17,11 +17,9 @@ typedef enum {
 } ZHCreatureGender;
 
 @interface ZHCreature : NSObject
-
 @property (nonatomic, copy)     NSString                *name;
 @property (nonatomic, assign)   NSUInteger              age;
 @property (nonatomic, assign)   float                   weight;
-@property (nonatomic, assign)   ZHCreatureGender        gender;
 @property (nonatomic, readonly) NSArray                 *children;
 
 - (instancetype)initWithName:(NSString*) name;

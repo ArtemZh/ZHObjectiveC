@@ -20,6 +20,17 @@ static NSString * const kZHHello = @"Hello";
 
 @dynamic children;
 
+#pragma mark -
+#pragma mark Class Methods
+
++ (void)sayHello {
+    NSLog(@"hello");
+}
+
+
+#pragma mark -
+#pragma mark Initializtions and Deallocations
+
 - (void)dealloc {
     self.name = nil;
     self.mutableChildren = nil;
@@ -43,9 +54,6 @@ static NSString * const kZHHello = @"Hello";
     return self;
 }
 
-+ (void)sayHello {
-    NSLog(@"hello");
-}
 
 #pragma mark -
 #pragma mark Accessors

@@ -14,5 +14,7 @@
 @property (nonatomic, assign) float     income;
 @property (nonatomic, assign) NSInteger yearsOfExperience;
 
+- (void)processObject:(id)object;
+
 @end
 

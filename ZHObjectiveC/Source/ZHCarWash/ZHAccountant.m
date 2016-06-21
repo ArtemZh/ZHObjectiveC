@@ -10,8 +10,13 @@
 
 @implementation ZHAccountant
 
-- (void)takedMoneyFromWorker {
-    NSLog(@"%f Taked money from Workers", self.money);
+- (void)calculateMoney {
+    NSLog(@"Calculated Money %f", self.money);
+}
+
+- (void)processObject:(id)object {
+    [self takeMoneyFromObject:object];
+    [self calculateMoney];
 }
 
 @end

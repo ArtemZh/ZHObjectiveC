@@ -8,14 +8,7 @@
 
 #import "ZHCreature.h"
 
-typedef enum {
-    ZHCreatureLost,
-    ZHCreatureDrow,
-    ZHCreatureWin
-} ZHCreatureWarResult;
-
 @interface ZHCreatureMale : ZHCreature
-
 @property (nonatomic, assign)   NSUInteger              winsCount;
 
 - (void)goFight;

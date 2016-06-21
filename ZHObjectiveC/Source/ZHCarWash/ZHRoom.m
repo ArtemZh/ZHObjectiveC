@@ -31,5 +31,19 @@
     return self;
 }
 
+- (NSArray *)workers {
+    return [[self.mutableWorkers copy] autorelease];
+}
+
+- (void)addWorker:(id)worker {
+    NSMutableArray *workers = self.mutableWorkers;
+    if (![workers containsObject:worker]){
+        [workers addObject:worker];
+    }
+}
+
+- (void)removeWorker:(id)worker {
+    [self.mutableWorkers removeObject:worker];
+}
 
 @end

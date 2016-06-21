@@ -11,7 +11,7 @@
 typedef struct {
     NSInteger min;
     NSInteger max;
-} ZHIntegerGap;
+} ZHIntegerRange;
 
 typedef enum {
     ZHLost,
@@ -20,7 +20,7 @@ typedef enum {
 } ZHCompetitionResult;
 
 
-NSUInteger ZHRandomPositivIntegerWithLimitValue(NSUInteger value);
+NSUInteger ZHRandomIntegerWithLimitValue(NSUInteger value);
 
 NSInteger ZHRandomIntegerWithinGivenLimits(NSInteger value1, NSInteger value2);
 
@@ -28,8 +28,3 @@ BOOL ZHRandomBool(void);
 
 ZHCompetitionResult ZHRandomСompetitionResult(void);
 
-@interface ZHRandom : NSObject 
-
-+ ZHRandomString:(NSMutableString *)string withSize:(NSUInteger)value;
-
-@end
