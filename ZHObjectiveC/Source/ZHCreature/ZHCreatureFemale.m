@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
+
+
 #import "ZHCreatureFemale.h"
 
 @implementation ZHCreatureFemale
@@ -18,7 +20,7 @@
     NSLog(@"%@ - Give birth" , self.name);
     ZHCreature *child = [ZHCreature object];
     [self addChild:child];
-    child.name = @"child";
+    child.name = kZHDefoultChildName;
     return child;
 }
 

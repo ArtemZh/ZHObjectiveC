@@ -1,14 +1,16 @@
 //
-//  NSString+ZHExtantion.m
+//  NSString+ZHExtension.m
 //  ZHObjectiveC
 //
 //  Created by Artem Zhavrotskiy on 21.06.16.
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
-#import "NSString+ZHExtantion.h"
+#import "NSString+ZHExtension.h"
 
 @implementation NSString (ZHExtension)
+
+//in methods need to remove duplicate code written below
 
 + (instancetype)randomLowercaseStringwithLength:(NSUInteger)length {
     NSMutableString *string = [NSMutableString stringWithCapacity:length];

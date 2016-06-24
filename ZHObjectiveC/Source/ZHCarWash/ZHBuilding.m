@@ -52,11 +52,10 @@
 }
 
 - (void)removeRoom:(ZHRoom *)room {
-    NSMutableArray *rooms = self.mutablerooms;
-    if([rooms containsObject:room]) {
-        [rooms removeObject:room];
-    }
+    [self.mutablerooms removeObject:room];
 }
+
+
 
 
 @end

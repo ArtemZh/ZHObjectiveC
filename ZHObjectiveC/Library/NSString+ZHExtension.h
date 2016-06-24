@@ -1,5 +1,5 @@
 //
-//  NSString+ZHExtantion.h
+//  NSString+ZHExtension.h
 //  ZHObjectiveC
 //
 //  Created by Artem Zhavrotskiy on 21.06.16.
@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+static const int      kZHDefoultStringLenght = 10;
 @interface NSString (ZHExtension)
 
 + (instancetype)randomLowercaseStringwithLength:(NSUInteger)length;

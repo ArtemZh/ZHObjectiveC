@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC18A4501D09D3CD001A9D81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC18A44F1D09D3CD001A9D81 /* main.m */; };
-		ACD2C7F91D197D67002C38BD /* NSString+ZHExtantion.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7F81D197D67002C38BD /* NSString+ZHExtantion.m */; };
+		ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */; };
+		ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */; };
 		ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */; };
 		ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FA1D0DA64600B83075 /* ZHCreature.m */; };
 		ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FC1D0DA64600B83075 /* ZHCreatureFemale.m */; };
@@ -40,8 +41,10 @@
 /* Begin PBXFileReference section */
 		AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZHObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC18A44F1D09D3CD001A9D81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		ACD2C7F81D197D67002C38BD /* NSString+ZHExtantion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHExtantion.m"; sourceTree = "<group>"; };
-		ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtantion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHExtantion.h"; sourceTree = "<group>"; };
+		ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHExtension.m"; sourceTree = "<group>"; };
+		ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHExtension.h"; sourceTree = "<group>"; };
+		ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCarWashingProcess.m; sourceTree = "<group>"; };
+		ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCarWashingProcess.h; sourceTree = "<group>"; };
 		ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZHExtension.h"; sourceTree = "<group>"; };
 		ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZHExtension.m"; sourceTree = "<group>"; };
 		ACFC33F91D0DA64600B83075 /* ZHCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCreature.h; sourceTree = "<group>"; };
@@ -128,8 +131,8 @@
 				ACFC34221D0DB2F900B83075 /* ZHRandom.m */,
 				ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */,
 				ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */,
-				ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtantion.h */,
-				ACD2C7F81D197D67002C38BD /* NSString+ZHExtantion.m */,
+				ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */,
+				ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -152,6 +155,8 @@
 			children = (
 				ACFC34131D0DAD3000B83075 /* ZHConstants.h */,
 				ACFC34241D0DB61E00B83075 /* ZHMoneyTransferProtocol.h */,
+				ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */,
+				ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */,
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
 				ACFC34111D0DACB200B83075 /* ZHCar.m */,
 				ACFC34141D0DAE1300B83075 /* ZHWorkers */,
@@ -254,7 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACD2C7F91D197D67002C38BD /* NSString+ZHExtantion.m in Sources */,
+				ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */,
+				ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */,
 				ACFC341D1D0DB10700B83075 /* ZHAccountant.m in Sources */,
 				ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */,
 				ACFC34061D0DA6A500B83075 /* ZHBuilding.m in Sources */,

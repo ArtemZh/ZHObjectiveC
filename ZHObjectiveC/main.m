@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ZHCreature.h"
 #import "ZHCreatureTest.h"
-#import "NSString+ZHExtantion.h"
+#import "NSString+ZHExtension.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -18,9 +18,11 @@ int main(int argc, const char * argv[]) {
         
         [test ZHCreatureTest];
         
-        NSString *stringTest = [[NSString randomLowercaseStringwithLength:10] autorelease ];
+        int lenght = kZHDefoultStringLenght;
+        
+        NSString *stringTest = [[NSString randomLowercaseStringwithLength:lenght] init ];
         NSLog(@" %@", stringTest);
-        stringTest = [[NSString randomNumericStringwithLength:10] autorelease ];
+        stringTest = [[NSString randomNumericStringwithLength:lenght] init ];
     }
     return 0;
 }
