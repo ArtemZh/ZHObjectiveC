@@ -20,7 +20,7 @@
     NSLog(@"%@ - Give birth" , self.name);
     ZHCreature *child = [ZHCreature object];
     [self addChild:child];
-    child.name = kZHDefoultChildName;
+    child.name = kZHDefaultChildName;
     return child;
 }
 

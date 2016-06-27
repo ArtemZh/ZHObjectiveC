@@ -7,12 +7,16 @@
 //
 
 #import "ZHMoneyTransferProtocol.h"
+#import "ZHWorkersDelegate.h"
 
 #import <Foundation/Foundation.h>
 
 @interface ZHWorker : NSObject <ZHMoneyTransferProtocol>
 @property (nonatomic, assign) float     income;
 @property (nonatomic, assign) NSInteger yearsOfExperience;
+
+@property (nonatomic, assign)   BOOL        busy;
+@property (nonatomic, assign)   id<ZHWorkersDelegate>  delegate;
 
 - (void)processObject:(id)object;
 

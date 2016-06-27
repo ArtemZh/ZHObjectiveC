@@ -10,7 +10,7 @@
 #import "NSObject+ZHExtension.h"
 
 @interface ZHBuilding()
-@property (nonatomic, retain) NSMutableArray *mutablerooms;
+@property (nonatomic, retain) NSMutableArray *mutableRooms;
 
 @end
 
@@ -22,14 +22,14 @@
 #pragma mark initialize / deallocate
 
 - (void)dealloc {
-    self.mutablerooms = nil;
+    self.mutableRooms = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.mutablerooms = [NSMutableArray object];
+    self.mutableRooms = [NSMutableArray object];
     
     return self;
 }
@@ -38,24 +38,41 @@
 #pragma mark Accessors
 
 - (NSArray *)rooms {
-    return [[self.mutablerooms copy] autorelease];
+    return [[self.mutableRooms copy] autorelease];
 }
 
 #pragma mark -
 #pragma mark Public methods
 
 - (void)addRoom:(ZHRoom *)room {
-    NSMutableArray *rooms = self.mutablerooms;
+    NSMutableArray *rooms = self.mutableRooms;
     if(![rooms containsObject:room]) {
         [rooms addObject:room];
     }
 }
 
 - (void)removeRoom:(ZHRoom *)room {
-    [self.mutablerooms removeObject:room];
+    [self.mutableRooms removeObject:room];
 }
 
+- (NSArray *)roomsWithClass:(Class)class {
+    NSMutableArray *rooms = [NSMutableArray object];
+    for (ZHRoom *room in self.rooms) {
+        if ([rooms isMemberOfClass:class])
+            [rooms addObject:room];
+    }
+    
+    return rooms;
+}
 
+- (NSArray *)workersWithClass:(Class)class {
+    NSMutableArray *workers = [NSMutableArray object];
+    for (ZHRoom *room in self.rooms) {
+        [workers addObjectsFromArray:[room workersWithClass:class]];
+    }
+    
+    return [[workers copy] autorelease];
+}
 
 
 @end

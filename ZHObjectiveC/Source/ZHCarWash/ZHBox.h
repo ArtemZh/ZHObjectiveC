@@ -12,7 +12,6 @@
 #import "ZHConstants.h"
 
 @interface ZHBox : ZHRoom
-
 @property(nonatomic, readonly)  NSArray<ZHCar *> *cars;
 @property (nonatomic, readonly, getter = isOccupied) BOOL    occupied; 
 

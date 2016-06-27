@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC18A4501D09D3CD001A9D81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC18A44F1D09D3CD001A9D81 /* main.m */; };
+		AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4D61D21191900FAF721 /* ZHQueue.m */; };
+		AC91A4DC1D219E0D00FAF721 /* NSArray+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */; };
 		ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */; };
 		ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */; };
 		ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */; };
@@ -41,6 +43,11 @@
 /* Begin PBXFileReference section */
 		AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZHObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC18A44F1D09D3CD001A9D81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC91A4D61D21191900FAF721 /* ZHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHQueue.m; sourceTree = "<group>"; };
+		AC91A4D81D21193C00FAF721 /* ZHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHQueue.h; sourceTree = "<group>"; };
+		AC91A4D91D21963700FAF721 /* ZHWorkersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWorkersDelegate.h; sourceTree = "<group>"; };
+		AC91A4DA1D219D2E00FAF721 /* NSArray+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ZHExtension.h"; sourceTree = "<group>"; };
+		AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ZHExtension.m"; sourceTree = "<group>"; };
 		ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZHExtension.m"; sourceTree = "<group>"; };
 		ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHExtension.h"; sourceTree = "<group>"; };
 		ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCarWashingProcess.m; sourceTree = "<group>"; };
@@ -127,8 +134,12 @@
 		ACFC33EE1D0D8B8800B83075 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AC91A4D81D21193C00FAF721 /* ZHQueue.h */,
+				AC91A4D61D21191900FAF721 /* ZHQueue.m */,
 				ACFC34211D0DB2F900B83075 /* ZHRandom.h */,
 				ACFC34221D0DB2F900B83075 /* ZHRandom.m */,
+				AC91A4DA1D219D2E00FAF721 /* NSArray+ZHExtension.h */,
+				AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */,
 				ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */,
 				ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */,
 				ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */,
@@ -155,6 +166,7 @@
 			children = (
 				ACFC34131D0DAD3000B83075 /* ZHConstants.h */,
 				ACFC34241D0DB61E00B83075 /* ZHMoneyTransferProtocol.h */,
+				AC91A4D91D21963700FAF721 /* ZHWorkersDelegate.h */,
 				ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */,
 				ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */,
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
@@ -262,6 +274,7 @@
 				ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */,
 				ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */,
 				ACFC341D1D0DB10700B83075 /* ZHAccountant.m in Sources */,
+				AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */,
 				ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */,
 				ACFC34061D0DA6A500B83075 /* ZHBuilding.m in Sources */,
 				ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */,
@@ -270,6 +283,7 @@
 				ACFC34171D0DAE9200B83075 /* ZHWorker.m in Sources */,
 				ACFC34121D0DACB200B83075 /* ZHCar.m in Sources */,
 				ACFC342F1D13049000B83075 /* ZHCreatureTest.m in Sources */,
+				AC91A4DC1D219E0D00FAF721 /* NSArray+ZHExtension.m in Sources */,
 				ACFC341A1D0DB0E500B83075 /* ZHBoss.m in Sources */,
 				ACFC340C1D0DAAA900B83075 /* ZHBox.m in Sources */,
 				ACFC34231D0DB2F900B83075 /* ZHRandom.m in Sources */,

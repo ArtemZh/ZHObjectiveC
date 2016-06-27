@@ -11,10 +11,12 @@
 #import <Foundation/Foundation.h>
 
 @interface ZHBuilding : NSObject
-
 @property (nonatomic, readonly) NSArray *rooms;
 
 - (void)addRoom:(ZHRoom *)room;
 - (void)removeRoom:(ZHRoom *)room;
+- (NSArray *)workersWithClass:(Class)cls;
+- (NSArray *)roomsWithClass:(Class)cls;
+
 
 @end

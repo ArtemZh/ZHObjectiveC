@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ZHCarWashingProcess : NSObject
+
 - (void)washCar:(ZHCar *)car;
 
 @end

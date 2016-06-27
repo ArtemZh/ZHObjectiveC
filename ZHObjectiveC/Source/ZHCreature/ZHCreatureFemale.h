@@ -8,7 +8,7 @@
 
 #import "ZHCreatureMale.h"
 
-static NSString * const kZHDefoultChildName = @"child";
+static NSString * const kZHDefaultChildName = @"child";
 @interface ZHCreatureFemale : ZHCreature
 
 - (ZHCreature *)giveBirth;

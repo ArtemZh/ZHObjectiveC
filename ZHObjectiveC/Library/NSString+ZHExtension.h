@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static const int      kZHDefoultStringLenght = 10;
+static const int      kZHDefaultStringLength = 10;
 @interface NSString (ZHExtension)
 
 + (instancetype)randomLowercaseStringwithLength:(NSUInteger)length;

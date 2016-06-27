@@ -12,10 +12,10 @@
 #import <Foundation/Foundation.h>
 
 @interface ZHRoom : NSObject
-
 @property (nonatomic, readonly) NSArray *workers ;
 
 - (void)addWorker:(id)worker;
 - (void)removeWorker:(id)worker;
+- (NSArray *)workersWithClass:(Class)cls;
 
 @end

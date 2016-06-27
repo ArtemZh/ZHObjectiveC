@@ -34,10 +34,6 @@
     creature.name = @"Mama2";
     [creatures addObject:creature];
     
-//    for (uint8_t iterator = 0; iterator < creatures.count - 1; iterator++) {
-//        [creature addChild:creatures[iterator]];
-//    }
-    
     for (ZHCreature *creature in creatures) {
         [creature addChild:creature];
     }

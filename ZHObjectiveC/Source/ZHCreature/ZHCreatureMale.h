@@ -9,7 +9,6 @@
 #import "ZHCreature.h"
 
 @interface ZHCreatureMale : ZHCreature
-@property (nonatomic, assign)   NSUInteger              winsCount;
 
 - (void)goFight;
 

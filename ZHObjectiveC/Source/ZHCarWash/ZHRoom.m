@@ -10,7 +10,6 @@
 #import "NSObject+ZHExtension.h"
 
 @interface ZHRoom ()
-
 @property (nonatomic, retain) NSMutableArray *mutableWorkers;
 
 @end
@@ -45,5 +44,17 @@
 - (void)removeWorker:(id)worker {
     [self.mutableWorkers removeObject:worker];
 }
+
+- (NSArray *)workersWithClass:(Class)class {
+    NSMutableArray *workers = [NSMutableArray array];
+    for (ZHWorker *worker in self.workers) {
+        if ([worker isMemberOfClass:class]) {
+            [workers addObject:worker];
+        }
+    }
+    
+    return [[workers copy] autorelease];
+}
+
 
 @end

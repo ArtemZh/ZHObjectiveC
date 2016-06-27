@@ -8,16 +8,29 @@
 #import "ZHCarWashingProcess.h"
 
 #import "NSObject+ZHExtension.h"
+#import "NSArray+ZHExtension.h"
 #import "ZHBuilding.h"
 #import "ZHRoom.h"
 #import "ZHBox.h"
 #import "ZHCarWasher.h"
+#import "ZHQueue.h"
+
 
 @interface ZHCarWashingProcess ()
 @property (nonatomic, retain) ZHBuilding        *washBuilding;
 @property (nonatomic, retain) ZHBuilding        *officeBuilding;
+@property (nonatomic, retain) ZHQueue           *carQueue;
 
 - (void)initInfrastructure;
+
+- (id)freeWasher;
+- (id)freeAccountant;
+- (id)freeDirector;
+
+- (id)reservedFreeWorkerWithClass:(Class)class;
+- (ZHBuilding *)buildingForWorkerWithClass:(Class)class;
+
+- (ZHBox *)freeCarWashRoom;
 
 @end
 
@@ -45,20 +58,24 @@
     ZHAccountant *accountant = [ZHAccountant object];
     ZHBoss *boss = [ZHBoss object];
     
+//    self.officeBuilding = [ZHBuilding object];
+//    self.washBuilding = [ZHBuilding object];
+//    ZHBuilding *officeBuilding = self.officeBuilding;
+//    ZHBuilding *washBuilding = self.washBuilding;
+    
     self.officeBuilding = [ZHBuilding object];
     self.washBuilding = [ZHBuilding object];
     
-    ZHBuilding *officeBuilding = self.officeBuilding;
-    ZHBuilding *washBuilding = self.washBuilding;
+    
     ZHBox *box = [ZHBox object];
-    ZHRoom *room = [[ZHRoom alloc] init];
+    ZHRoom *room = [ZHRoom object];
     
     [box addWorker:washer];
-    [washBuilding addRoom:box];
+    [self.washBuilding addRoom:box];
     
     [room addWorker:accountant];
     [room addWorker:boss];
-    [officeBuilding addRoom:room];
+    [self.officeBuilding addRoom:room];
 
 }
 
@@ -71,6 +88,39 @@
 //    [washer processObject:car];
 }
 
+- (id)freeWasher {
+    return [self reservedFreeWorkerWithClass:[ZHCarWasher class]];
+}
 
+- (id)freeAccountant {
+    return [self reservedFreeWorkerWithClass:[ZHAccountant class]];
+}
+
+- (id)freeDirector {
+    return [self reservedFreeWorkerWithClass:[ZHBoss class]];
+}
+
+//- (id)reservedFreeWorkerWithClass:(Class)class {
+//    NSArray *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
+//    workers = [workers filteredUsingBlock:^BOOL(ZHWorker *worker) { return !worker.busy; }];
+//    ZHWorker *freeWorker = [workers firstObject];
+//    
+//    freeWorker.busy = YES;
+//    
+//    return freeWorker;
+//}
+//
+//- (ZHBuilding *)buildingForWorkerWithClass:(Class)class {
+//    return [class isSubclassOfClass:[ZHCarWasher class]] ? self.washBuilding : self.officeBuilding;
+//}
+//
+//- (ZHBox *)freeCarWashRoom {
+//    NSArray *rooms = [self.washBuilding roomsWithClass:[ZHBox class]];
+//    rooms = [rooms filteredUsingBlock:^BOOL(ZHBox *room) { return !room.cars; }];
+//    
+//    return [rooms firstObject];
+//}
+//
+//
 
 @end

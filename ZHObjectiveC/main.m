@@ -18,7 +18,7 @@ int main(int argc, const char * argv[]) {
         
         [test ZHCreatureTest];
         
-        int lenght = kZHDefoultStringLenght;
+        int lenght = kZHDefaultStringLength;
         
         NSString *stringTest = [[NSString randomLowercaseStringwithLength:lenght] init ];
         NSLog(@" %@", stringTest);
