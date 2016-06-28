@@ -48,7 +48,7 @@
 }
 
 - (void)processObject:(id)object {
-   ///
+   
 }
 
 @end

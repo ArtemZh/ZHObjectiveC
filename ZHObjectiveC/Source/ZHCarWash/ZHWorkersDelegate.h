@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ZHWorkersDelegate <NSObject>
-
-- (void)workerDidFinishProcessingObject:(id)worker;
-
-@end
+//@protocol ZHWorkersDelegate <NSObject>
+//
+//- (void)workerDidFinishProcessingObject:(id)worker;
+//
+//@end

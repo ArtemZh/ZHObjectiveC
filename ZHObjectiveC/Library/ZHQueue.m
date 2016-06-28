@@ -10,26 +10,26 @@
 #import "NSObject+ZHExtension.h"
 
 @interface ZHQueue ()
-@property (nonatomic, retain) NSMutableArray *objectsQueue;
+@property (nonatomic, retain) NSMutableArray *queue;
 
 @end
 
 @implementation ZHQueue
 
-@dynamic objectsCount;
+@dynamic count;
 
 #pragma mark -
 #pragma mark Initialization and deallocation
 
 - (void)dealloc {
-    self.objectsQueue = nil;
+    self.queue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.objectsQueue = [NSMutableArray object];
+    self.queue = [NSMutableArray object];
     
     return self;
 }
@@ -38,22 +38,26 @@
 #pragma mark Accessors
 
 - (NSUInteger)count {
-    return self.objectsQueue.count;
+    return self.queue.count;
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)enqueue:(id)object {
-    if (![self.objectsQueue containsObject:object]) {
-        [self.objectsQueue addObject:object];
+    if (![self.queue containsObject:object]) {
+        [self.queue addObject:object];
     }
 }
 
 - (id)dequeue {
-    NSMutableArray *objects = self.objectsQueue;
-    id object = [objects firstObject];
-    [self.objectsQueue removeObject:object];
+    NSMutableArray *objects = self.queue;
+    if (!objects.count) {
+        return nil;
+    }
+    
+    id object = [[[objects firstObject] retain] autorelease];
+    [self.queue removeObject:object];
     
     return object;
 }

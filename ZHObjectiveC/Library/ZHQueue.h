@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ZHQueue : NSObject
-@property (nonatomic, readonly) NSUInteger objectsCount;
+@property (nonatomic, readonly) NSUInteger count;
 
 - (void)enqueue:(id)object;
 - (id)dequeue;

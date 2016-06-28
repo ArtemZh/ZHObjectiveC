@@ -16,6 +16,7 @@
 }
 
 - (void)processObject:(id)object {
+    
     [self washCar:object];
 }
 
