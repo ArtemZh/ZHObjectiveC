@@ -12,6 +12,6 @@ typedef BOOL(^ZHArrayFiltredUsingBlock)(id object);
 
 @interface NSArray (ZHExtensions)
 
-- (NSArray *)filteredUsingBlock:(ZHArrayFiltredUsingBlock)block;
+- (NSArray *)filteredArrayUsingBlock:(ZHArrayFiltredUsingBlock)block;
 
 @end

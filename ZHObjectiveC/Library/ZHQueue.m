@@ -45,9 +45,12 @@
 #pragma mark Public Methods
 
 - (void)enqueue:(id)object {
-    if (![self.queue containsObject:object]) {
-        [self.queue addObject:object];
+    NSMutableArray *queue = self.queue;
+    if (![queue containsObject:object]) {
+        [queue addObject:object];
+        NSLog(@"Test");
     }
+//    [queue addObject:object];
 }
 
 - (id)dequeue {
@@ -57,8 +60,8 @@
     }
     
     id object = [[[objects firstObject] retain] autorelease];
-    [self.queue removeObject:object];
-    
+    [objects removeObject:object];
+    NSLog(@"Test");
     return object;
 }
 

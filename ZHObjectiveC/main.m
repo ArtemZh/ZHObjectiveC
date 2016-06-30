@@ -10,19 +10,34 @@
 #import "ZHCreature.h"
 #import "ZHCreatureTest.h"
 #import "NSString+ZHExtension.h"
+#import "ZHCarWashingProcess.h"
+#import "ZHQueue.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-        ZHCreatureTest *test = [[ZHCreatureTest new] autorelease];
+//        ZHCreatureTest *test = [[ZHCreatureTest new] autorelease];
+//        
+//        [test ZHCreatureTest];
+//        
+//        int lenght = kZHDefaultStringLength;
+//        
+//        NSString *stringTest = [[NSString randomLowercaseStringwithLength:lenght] init ];
+//        NSLog(@" %@", stringTest);
+//        stringTest = [[NSString randomNumericStringwithLength:lenght] init ];
         
-        [test ZHCreatureTest];
+        ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
+        ZHCar *car = [ZHCar object];
         
-        int lenght = kZHDefaultStringLength;
+        [complex washCar:car];
         
-        NSString *stringTest = [[NSString randomLowercaseStringwithLength:lenght] init ];
-        NSLog(@" %@", stringTest);
-        stringTest = [[NSString randomNumericStringwithLength:lenght] init ];
+        
+        ZHQueue *testQueue = [ZHQueue object];
+        [testQueue enqueue:car];
+        [testQueue dequeue];
+        
+        
+        
     }
     return 0;
 }

@@ -35,6 +35,8 @@
 
 - (ZHBox *)freeCarWashRoom;
 
+- (void)addCarToWash:(ZHCar *)car;
+
 @end
 
 @implementation ZHCarWashingProcess
@@ -97,7 +99,7 @@
 
 - (id)reservedFreeWorkerWithClass:(Class)class {
     NSArray *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
-    workers = [workers filteredUsingBlock:^BOOL(ZHWorker *worker) { return !worker.busy; }];
+    workers = [workers filteredArrayUsingBlock:^BOOL(ZHWorker *worker) { return !worker.busy; }];
     ZHWorker *freeWorker = [workers firstObject];
     
     freeWorker.busy = YES;
@@ -111,28 +113,55 @@
 
 - (ZHBox *)freeCarWashRoom {
     NSArray *rooms = [self.washBuilding roomsWithClass:[ZHBox class]];
-    rooms = [rooms filteredUsingBlock:^BOOL(ZHBox *room) { return !room.cars; }];
+    rooms = [rooms filteredArrayUsingBlock:^BOOL(ZHBox *room) { return !room.cars; }];
     
     return [rooms firstObject];
 }
 
-- (void)washCar:(ZHCar*)car {
+//- (void)washCar:(ZHCar*)car {
+//    ZHQueue *carsQueue = self.carsQueue;
+//    [carsQueue enqueue:car];
+//    
+//    ZHBox *cars = nil;
+//    while ((cars = [carsQueue dequeue])) {
+//        
+//        ZHCarWasher *washer = [self freeWasher];
+//        
+//        ZHBox *box = [self freeCarWashRoom];
+//        [box addCar:car];
+//        
+//        [washer processObject:car];
+//        
+//        box.cars = nil;
+//        
+//    }
+//}
+
+- (void)washCar:(ZHCar *)car {
     ZHQueue *carsQueue = self.carsQueue;
     [carsQueue enqueue:car];
+    //test
+    NSLog(@"count %lu", carsQueue.count);
     
-    ZHBox *cars = nil;
-    while ((cars = [carsQueue dequeue])) {
+    ZHCar *carToWash = nil;
+    while ((carToWash = [carsQueue dequeue])) {
         
         ZHCarWasher *washer = [self freeWasher];
         
         ZHBox *box = [self freeCarWashRoom];
-        [box addCar:car];
+        [box addCar:carToWash];
         
-        [washer processObject:car];
+        [washer processObject:carToWash];
         
-        box.cars = nil;
-        
+        [box removeCar:carToWash];
     }
+}
+
+
+
+- (void)addCarToWash:(ZHCar *)car {
+    ZHQueue *queue = self.carsQueue;
+    [queue enqueue:car];
 }
 
 @end

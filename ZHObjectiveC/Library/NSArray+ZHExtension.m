@@ -10,7 +10,7 @@
 
 @implementation NSArray (ZHExtensions)
 
-- (NSArray *)filteredUsingBlock:(ZHArrayFiltredUsingBlock)block {
+- (NSArray *)filteredArrayUsingBlock:(ZHArrayFiltredUsingBlock)block {
     if (!block) {
         return nil;
     }

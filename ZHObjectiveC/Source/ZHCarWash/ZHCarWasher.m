@@ -13,11 +13,13 @@
 - (void)washCar:(ZHCar *)car {
     [self takeMoneyFromObject:car];
     car.status = ZHCarClean;
+    NSLog(@"Car washed/ %f", self.money);
 }
 
 - (void)processObject:(id)object {
-    
+    self.busy = YES;
     [self washCar:object];
+    self.busy = NO;
 }
 
 @end

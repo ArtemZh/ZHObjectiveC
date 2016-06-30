@@ -13,6 +13,7 @@
 
 @interface ZHBox : ZHRoom
 @property (nonatomic, retain)    NSArray *cars;
+@property (nonatomic, readonly, getter = isOccupied)    BOOL    occupied;
 
 - (void)addCar:(ZHCar *)car;
 - (void)removeCar:(ZHCar *)car;
