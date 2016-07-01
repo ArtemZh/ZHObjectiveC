@@ -32,10 +32,6 @@ int main(int argc, const char * argv[]) {
         [complex washCar:car];
         
         
-        ZHQueue *testQueue = [ZHQueue object];
-        [testQueue enqueue:car];
-        [testQueue dequeue];
-        
         
         
     }

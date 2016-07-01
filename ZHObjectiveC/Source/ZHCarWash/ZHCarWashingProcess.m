@@ -8,9 +8,6 @@
 
 #import "ZHCarWashingProcess.h"
 
-#import "NSObject+ZHExtension.h"
-#import "NSArray+ZHExtension.h"
-
 #import "ZHBuilding.h"
 #import "ZHRoom.h"
 #import "ZHBox.h"
@@ -18,6 +15,8 @@
 #import "ZHQueue.h"
 #import "ZHCar.h"
 
+#import "NSObject+ZHExtension.h"
+#import "NSArray+ZHExtension.h"
 
 @interface ZHCarWashingProcess ()
 @property (nonatomic, retain) ZHBuilding        *washBuilding;
@@ -34,8 +33,9 @@
 - (ZHBuilding *)buildingForWorkerWithClass:(Class)class;
 
 - (ZHBox *)freeCarWashRoom;
-
 - (void)addCarToWash:(ZHCar *)car;
+- (id)prepareArrayWorkersWithClass:(Class)class;
+- (void)takeAllMoneyfromWorkers:(ZHQueue *)workers andMonayOwnerwith:(Class) moneyOwner;
 
 @end
 
@@ -66,7 +66,7 @@
     
     self.officeBuilding = [ZHBuilding object];
     self.washBuilding = [ZHBuilding object];
-    
+    self.carsQueue = [ZHQueue object];
     
     ZHBox *box = [ZHBox object];
     ZHRoom *room = [ZHRoom object];
@@ -77,13 +77,10 @@
     [room addWorker:accountant];
     [room addWorker:boss];
     [self.officeBuilding addRoom:room];
-
 }
 
 #pragma mark -
 #pragma mark Public Implementation
-
-
 
 - (id)freeWasher {
     return [self reservedFreeWorkerWithClass:[ZHCarWasher class]];
@@ -118,30 +115,11 @@
     return [rooms firstObject];
 }
 
-//- (void)washCar:(ZHCar*)car {
-//    ZHQueue *carsQueue = self.carsQueue;
-//    [carsQueue enqueue:car];
-//    
-//    ZHBox *cars = nil;
-//    while ((cars = [carsQueue dequeue])) {
-//        
-//        ZHCarWasher *washer = [self freeWasher];
-//        
-//        ZHBox *box = [self freeCarWashRoom];
-//        [box addCar:car];
-//        
-//        [washer processObject:car];
-//        
-//        box.cars = nil;
-//        
-//    }
-//}
-
 - (void)washCar:(ZHCar *)car {
     ZHQueue *carsQueue = self.carsQueue;
     [carsQueue enqueue:car];
     //test
-    NSLog(@"count %lu", carsQueue.count);
+    NSLog(@"Cars in carsQueue = %lu", carsQueue.count);
     
     ZHCar *carToWash = nil;
     while ((carToWash = [carsQueue dequeue])) {
@@ -154,14 +132,31 @@
         [washer processObject:carToWash];
         
         [box removeCar:carToWash];
+        
     }
+    ZHQueue *workers = [self prepareArrayWorkersWithClass:[ZHCarWasher class]];
+    [self takeAllMoneyfromWorkers:workers andMonayOwnerwith:[ZHAccountant class]];
+    
+    workers = [self prepareArrayWorkersWithClass:[ZHCarWasher class]];
+    [self takeAllMoneyfromWorkers:workers andMonayOwnerwith:[ZHBoss class]];
 }
-
-
 
 - (void)addCarToWash:(ZHCar *)car {
     ZHQueue *queue = self.carsQueue;
     [queue enqueue:car];
+}
+
+- (id)prepareArrayWorkersWithClass:(Class)class {
+     ZHQueue *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
+    
+    return workers;
+}
+
+- (void)takeAllMoneyfromWorkers:(ZHQueue *)workers andMonayOwnerwith:(Class) moneyOwner {
+    ZHWorker *worker = nil;
+    while ((worker = [workers dequeue])) {
+        [moneyOwner processObject:worker];
+    }
 }
 
 @end
