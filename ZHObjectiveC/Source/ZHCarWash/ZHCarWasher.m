@@ -17,9 +17,7 @@
 }
 
 - (void)processObject:(id)object {
-    self.busy = YES;
     [self washCar:object];
-    self.busy = NO;
 }
 
 @end

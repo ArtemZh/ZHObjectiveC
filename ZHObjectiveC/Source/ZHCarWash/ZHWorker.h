@@ -19,6 +19,7 @@
 //@property (nonatomic, assign)   id<ZHWorkersDelegate>  delegate;
 
 - (void)processObject:(id)object;
+- (void)performWorkWithObject:(id)object;
 
 @end
 

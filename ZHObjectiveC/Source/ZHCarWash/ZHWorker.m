@@ -54,4 +54,10 @@
   ///
 }
 
+- (void)performWorkWithObject:(id)object {
+    self.busy = YES;
+    [self processObject:object];
+    self.busy = NO;
+}
+
 @end

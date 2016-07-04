@@ -14,6 +14,8 @@
 #import "ZHCarWasher.h"
 #import "ZHQueue.h"
 #import "ZHCar.h"
+#import "ZHAccountant.h"
+#import "ZHBoss.h"
 
 #import "NSObject+ZHExtension.h"
 #import "NSArray+ZHExtension.h"
@@ -54,6 +56,8 @@
 
 - (instancetype)init {
     self = [super init];
+    
+    self.carsQueue = [ZHQueue object];
     [self initInfrastructure];
     
     return self;
@@ -66,7 +70,6 @@
     
     self.officeBuilding = [ZHBuilding object];
     self.washBuilding = [ZHBuilding object];
-    self.carsQueue = [ZHQueue object];
     
     ZHBox *box = [ZHBox object];
     ZHRoom *room = [ZHRoom object];
@@ -125,38 +128,21 @@
     while ((carToWash = [carsQueue dequeue])) {
         
         ZHCarWasher *washer = [self freeWasher];
+        ZHAccountant *accountant = [self freeAccountant];
+        ZHBoss *boss = [self freeDirector];
         
         ZHBox *box = [self freeCarWashRoom];
         [box addCar:carToWash];
         
         [washer processObject:carToWash];
+        [accountant processObject:washer];
+        [boss processObject:accountant];
         
         [box removeCar:carToWash];
         
     }
-    ZHQueue *workers = [self prepareArrayWorkersWithClass:[ZHCarWasher class]];
-    [self takeAllMoneyfromWorkers:workers andMonayOwnerwith:[ZHAccountant class]];
     
-    workers = [self prepareArrayWorkersWithClass:[ZHCarWasher class]];
-    [self takeAllMoneyfromWorkers:workers andMonayOwnerwith:[ZHBoss class]];
 }
 
-- (void)addCarToWash:(ZHCar *)car {
-    ZHQueue *queue = self.carsQueue;
-    [queue enqueue:car];
-}
-
-- (id)prepareArrayWorkersWithClass:(Class)class {
-     ZHQueue *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
-    
-    return workers;
-}
-
-- (void)takeAllMoneyfromWorkers:(ZHQueue *)workers andMonayOwnerwith:(Class) moneyOwner {
-    ZHWorker *worker = nil;
-    while ((worker = [workers dequeue])) {
-        [moneyOwner processObject:worker];
-    }
-}
 
 @end
