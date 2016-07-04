@@ -35,9 +35,6 @@
 - (ZHBuilding *)buildingForWorkerWithClass:(Class)class;
 
 - (ZHBox *)freeCarWashRoom;
-- (void)addCarToWash:(ZHCar *)car;
-- (id)prepareArrayWorkersWithClass:(Class)class;
-- (void)takeAllMoneyfromWorkers:(ZHQueue *)workers andMonayOwnerwith:(Class) moneyOwner;
 
 @end
 
@@ -130,16 +127,14 @@
         ZHCarWasher *washer = [self freeWasher];
         ZHAccountant *accountant = [self freeAccountant];
         ZHBoss *boss = [self freeDirector];
-        
         ZHBox *box = [self freeCarWashRoom];
+        
         [box addCar:carToWash];
-        
-        [washer processObject:carToWash];
-        [accountant processObject:washer];
-        [boss processObject:accountant];
-        
+        [washer performWorkWithObject:carToWash];
         [box removeCar:carToWash];
         
+        [accountant performWorkWithObject:washer];
+        [boss performWorkWithObject:accountant];
     }
     
 }
