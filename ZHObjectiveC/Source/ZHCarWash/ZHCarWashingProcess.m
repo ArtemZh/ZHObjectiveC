@@ -78,6 +78,9 @@
     [room addWorker:accountant];
     [room addWorker:boss];
     [officeBuilding addRoom:room];
+    
+    washer.delegate = accountant;
+    accountant.delegate = boss;
 }
 
 #pragma mark -
