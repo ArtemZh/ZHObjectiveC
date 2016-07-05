@@ -19,4 +19,9 @@
     [self calculateMoney];
 }
 
+- (void)workerDidFinishProcessingObject:(id)worker {
+    [self processObject:worker];
+}
+
+
 @end

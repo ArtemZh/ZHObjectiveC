@@ -65,18 +65,19 @@
     ZHAccountant *accountant = [ZHAccountant object];
     ZHBoss *boss = [ZHBoss object];
     
-    self.officeBuilding = [ZHBuilding object];
-    self.washBuilding = [ZHBuilding object];
+    ZHBuilding *officeBuilding = [ZHBuilding object];
+    
+    ZHBuilding *washBuilding = [ZHBuilding object];
     
     ZHBox *box = [ZHBox object];
     ZHRoom *room = [ZHRoom object];
     
     [box addWorker:washer];
-    [self.washBuilding addRoom:box];
+    [washBuilding addRoom:box];
     
     [room addWorker:accountant];
     [room addWorker:boss];
-    [self.officeBuilding addRoom:room];
+    [officeBuilding addRoom:room];
 }
 
 #pragma mark -
@@ -133,8 +134,8 @@
         [washer performWorkWithObject:carToWash];
         [box removeCar:carToWash];
         
-        [accountant performWorkWithObject:washer];
-        [boss performWorkWithObject:accountant];
+        //[accountant performWorkWithObject:washer];
+        //[boss performWorkWithObject:accountant];
     }
     
 }

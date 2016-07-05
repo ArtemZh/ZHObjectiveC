@@ -16,7 +16,7 @@
 @property (nonatomic, assign) NSInteger yearsOfExperience;
 
 @property (nonatomic, assign)   BOOL        busy;
-//@property (nonatomic, assign)   id<ZHWorkersDelegate>  delegate;
+@property (nonatomic, assign)   id<ZHWorkersDelegate>  delegate;
 
 - (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;

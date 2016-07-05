@@ -9,7 +9,7 @@
 #import "ZHWorker.h"
 #import "ZHBoss.h"
 
-@interface ZHAccountant : ZHWorker
+@interface ZHAccountant : ZHWorker <ZHWorkersDelegate>
 
 - (void)calculateMoney;
 

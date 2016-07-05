@@ -8,7 +8,7 @@
 
 #import "ZHWorker.h"
 
-@interface ZHBoss : ZHWorker
+@interface ZHBoss : ZHWorker <ZHWorkersDelegate>
 
 - (void)calculateProfit;
 

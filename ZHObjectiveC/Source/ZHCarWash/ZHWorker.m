@@ -57,6 +57,7 @@
 - (void)performWorkWithObject:(id)object {
     self.busy = YES;
     [self processObject:object];
+    [self.delegate workerDidFinishProcessingObject:self];
     self.busy = NO;
 }
 
