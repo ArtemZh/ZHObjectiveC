@@ -10,6 +10,7 @@
 
 @protocol ZHWorkersDelegate <NSObject>
 
+@optional
 - (void)workerDidFinishProcessingObject:(id)worker;
 
 @end

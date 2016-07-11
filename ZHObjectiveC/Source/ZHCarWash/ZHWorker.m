@@ -43,7 +43,6 @@
 
 - (void)takeMoneyFromObject:(id<ZHMoneyTransferProtocol>)owner {
     self.busy = YES;
-    //owner must be busy?
     float money = owner.money;
     [owner giveMoney:money];
     [self receiveMoney:money];

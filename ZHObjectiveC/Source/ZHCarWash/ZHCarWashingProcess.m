@@ -137,8 +137,8 @@
         [washer performWorkWithObject:carToWash];
         [box removeCar:carToWash];
         
-        //[accountant performWorkWithObject:washer];
-        //[boss performWorkWithObject:accountant];
+        [accountant performWorkWithObject:washer];
+        [boss performWorkWithObject:accountant];
     }
     
 }

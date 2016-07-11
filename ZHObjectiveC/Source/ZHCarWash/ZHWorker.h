@@ -11,7 +11,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZHWorker : NSObject <ZHMoneyTransferProtocol>
+@interface ZHWorker : NSObject <ZHMoneyTransferProtocol, ZHWorkersDelegate>
 @property (nonatomic, assign) float     income;
 @property (nonatomic, assign) NSInteger yearsOfExperience;
 
