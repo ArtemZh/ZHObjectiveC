@@ -18,7 +18,7 @@
 
 - (void)processObject:(id)object {
     [self washCar:object];
-    [self.delegate workerDidFinishProcessingObject:object];
+    //[self.delegate workerDidFinishProcessingObject:self];
 }
 
 @end

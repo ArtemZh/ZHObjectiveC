@@ -135,6 +135,9 @@
         ZHBoss *boss = [self freeDirector];
         ZHBox *box = [self freeCarWashRoom];
         
+        //washer.delegate = accountant;
+        //accountant.delegate = boss;
+        
         [box addCar:carToWash];
         [washer performWorkWithObject:carToWash];
         [box removeCar:carToWash];
