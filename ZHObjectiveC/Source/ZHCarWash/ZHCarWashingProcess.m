@@ -66,8 +66,10 @@
     ZHBoss *boss = [ZHBoss object];
     
     ZHBuilding *officeBuilding = [ZHBuilding object];
+    self.officeBuilding = officeBuilding;
     
     ZHBuilding *washBuilding = [ZHBuilding object];
+    self.washBuilding = washBuilding;
     
     ZHBox *box = [ZHBox object];
     ZHRoom *room = [ZHRoom object];
@@ -137,8 +139,8 @@
         [washer performWorkWithObject:carToWash];
         [box removeCar:carToWash];
         
-        [accountant performWorkWithObject:washer];
-        [boss performWorkWithObject:accountant];
+        //[accountant performWorkWithObject:washer];
+        //[boss performWorkWithObject:accountant];
     }
     
 }
