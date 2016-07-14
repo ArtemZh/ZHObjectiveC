@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC18A4501D09D3CD001A9D81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC18A44F1D09D3CD001A9D81 /* main.m */; };
+		AC29CB3E1D38044000C5FD8B /* ZHObjectiveCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */; };
 		AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4D61D21191900FAF721 /* ZHQueue.m */; };
 		AC91A4DC1D219E0D00FAF721 /* NSArray+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */; };
 		ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */; };
@@ -26,6 +27,8 @@
 		ACFC34201D0DB14400B83075 /* ZHCarWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC341F1D0DB14400B83075 /* ZHCarWasher.m */; };
 		ACFC34231D0DB2F900B83075 /* ZHRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC34221D0DB2F900B83075 /* ZHRandom.m */; };
 		ACFC342F1D13049000B83075 /* ZHCreatureTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC342E1D13049000B83075 /* ZHCreatureTest.m */; };
+		B3D7EE2BEEA0BD3B71285F75 /* libPods-ZHObjectiveCTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB025FA84A6F0ACF1BD997C /* libPods-ZHObjectiveCTest.a */; };
+		E40FEB5420EAD4D70410A392 /* libPods-ZHObjectiveC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47DFF3977DE834EAEFF69B98 /* libPods-ZHObjectiveC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,8 +44,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0ACF6543E84FC951C2198102 /* Pods-ZHObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveC/Pods-ZHObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
+		47DFF3977DE834EAEFF69B98 /* libPods-ZHObjectiveC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHObjectiveC.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB025FA84A6F0ACF1BD997C /* libPods-ZHObjectiveCTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHObjectiveCTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A998EF43074D19FA13467EF /* Pods-ZHObjectiveCTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveCTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveCTest/Pods-ZHObjectiveCTest.release.xcconfig"; sourceTree = "<group>"; };
+		A68676910BC26FECC3CE51AF /* Pods-ZHObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveC/Pods-ZHObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
 		AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZHObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC18A44F1D09D3CD001A9D81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC29CB3B1D38044000C5FD8B /* ZHObjectiveCTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZHObjectiveCTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHObjectiveCTest.m; sourceTree = "<group>"; };
+		AC29CB3F1D38044000C5FD8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC91A4D61D21191900FAF721 /* ZHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHQueue.m; sourceTree = "<group>"; };
 		AC91A4D81D21193C00FAF721 /* ZHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHQueue.h; sourceTree = "<group>"; };
 		AC91A4D91D21963700FAF721 /* ZHWorkersDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWorkersDelegate.h; sourceTree = "<group>"; };
@@ -82,6 +93,7 @@
 		ACFC34241D0DB61E00B83075 /* ZHMoneyTransferProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMoneyTransferProtocol.h; sourceTree = "<group>"; };
 		ACFC342E1D13049000B83075 /* ZHCreatureTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCreatureTest.m; sourceTree = "<group>"; };
 		ACFC34311D1304BC00B83075 /* ZHCreatureTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCreatureTest.h; sourceTree = "<group>"; };
+		D81A71EEA83DFFF6B87FAE2E /* Pods-ZHObjectiveCTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveCTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveCTest/Pods-ZHObjectiveCTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,18 +101,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40FEB5420EAD4D70410A392 /* libPods-ZHObjectiveC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC29CB381D38044000C5FD8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3D7EE2BEEA0BD3B71285F75 /* libPods-ZHObjectiveCTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		830F93C6F0903EC33E75B3ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0ACF6543E84FC951C2198102 /* Pods-ZHObjectiveC.debug.xcconfig */,
+				A68676910BC26FECC3CE51AF /* Pods-ZHObjectiveC.release.xcconfig */,
+				D81A71EEA83DFFF6B87FAE2E /* Pods-ZHObjectiveCTest.debug.xcconfig */,
+				6A998EF43074D19FA13467EF /* Pods-ZHObjectiveCTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AC18A4431D09D3CD001A9D81 = {
 			isa = PBXGroup;
 			children = (
 				AC18A44E1D09D3CD001A9D81 /* ZHObjectiveC */,
+				AC29CB3C1D38044000C5FD8B /* ZHObjectiveCTest */,
 				AC18A44D1D09D3CD001A9D81 /* Products */,
 				ACFC34251D12FF3D00B83075 /* Tests */,
+				830F93C6F0903EC33E75B3ED /* Pods */,
+				D2DA91914EC3B84B9F16E54B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */,
+				AC29CB3B1D38044000C5FD8B /* ZHObjectiveCTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +165,15 @@
 				ACFC33F81D0DA64600B83075 /* ZHCreature */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		AC29CB3C1D38044000C5FD8B /* ZHObjectiveCTest */ = {
+			isa = PBXGroup;
+			children = (
+				AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */,
+				AC29CB3F1D38044000C5FD8B /* Info.plist */,
+			);
+			path = ZHObjectiveCTest;
 			sourceTree = "<group>";
 		};
 		ACFC33EE1D0D8B8800B83075 /* Library */ = {
@@ -215,6 +260,15 @@
 			path = ZHObjectiveC/Tests;
 			sourceTree = "<group>";
 		};
+		D2DA91914EC3B84B9F16E54B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				47DFF3977DE834EAEFF69B98 /* libPods-ZHObjectiveC.a */,
+				5DB025FA84A6F0ACF1BD997C /* libPods-ZHObjectiveCTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -222,9 +276,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC18A4531D09D3CD001A9D81 /* Build configuration list for PBXNativeTarget "ZHObjectiveC" */;
 			buildPhases = (
+				0EF3880F0100571DDD857EBA /* [CP] Check Pods Manifest.lock */,
 				AC18A4481D09D3CD001A9D81 /* Sources */,
 				AC18A4491D09D3CD001A9D81 /* Frameworks */,
 				AC18A44A1D09D3CD001A9D81 /* CopyFiles */,
+				EF79866DF534ED4F1A1636BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -234,6 +290,26 @@
 			productName = ZHObjectiveC;
 			productReference = AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */;
 			productType = "com.apple.product-type.tool";
+		};
+		AC29CB3A1D38044000C5FD8B /* ZHObjectiveCTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC29CB421D38044000C5FD8B /* Build configuration list for PBXNativeTarget "ZHObjectiveCTest" */;
+			buildPhases = (
+				3F1CB8CB5FF95E34277EC9B4 /* [CP] Check Pods Manifest.lock */,
+				AC29CB371D38044000C5FD8B /* Sources */,
+				AC29CB381D38044000C5FD8B /* Frameworks */,
+				AC29CB391D38044000C5FD8B /* Resources */,
+				33190AF289BDB5D09947C74D /* [CP] Embed Pods Frameworks */,
+				34E4FBFF1587293017FF282E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZHObjectiveCTest;
+			productName = ZHObjectiveCTest;
+			productReference = AC29CB3B1D38044000C5FD8B /* ZHObjectiveCTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -245,6 +321,9 @@
 				ORGANIZATIONNAME = "Artem Zhavrotskiy";
 				TargetAttributes = {
 					AC18A44B1D09D3CD001A9D81 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					AC29CB3A1D38044000C5FD8B = {
 						CreatedOnToolsVersion = 7.3;
 					};
 				};
@@ -262,9 +341,98 @@
 			projectRoot = "";
 			targets = (
 				AC18A44B1D09D3CD001A9D81 /* ZHObjectiveC */,
+				AC29CB3A1D38044000C5FD8B /* ZHObjectiveCTest */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC29CB391D38044000C5FD8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0EF3880F0100571DDD857EBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33190AF289BDB5D09947C74D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHObjectiveCTest/Pods-ZHObjectiveCTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34E4FBFF1587293017FF282E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHObjectiveCTest/Pods-ZHObjectiveCTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F1CB8CB5FF95E34277EC9B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF79866DF534ED4F1A1636BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZHObjectiveC/Pods-ZHObjectiveC-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AC18A4481D09D3CD001A9D81 /* Sources */ = {
@@ -290,6 +458,14 @@
 				ACFC34201D0DB14400B83075 /* ZHCarWasher.m in Sources */,
 				ACFC34091D0DA75100B83075 /* ZHRoom.m in Sources */,
 				ACFC34011D0DA64600B83075 /* ZHCreatureMale.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC29CB371D38044000C5FD8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC29CB3E1D38044000C5FD8B /* ZHObjectiveCTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +555,7 @@
 		};
 		AC18A4541D09D3CD001A9D81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0ACF6543E84FC951C2198102 /* Pods-ZHObjectiveC.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,8 +564,35 @@
 		};
 		AC18A4551D09D3CD001A9D81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A68676910BC26FECC3CE51AF /* Pods-ZHObjectiveC.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AC29CB401D38044000C5FD8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D81A71EEA83DFFF6B87FAE2E /* Pods-ZHObjectiveCTest.debug.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ZHObjectiveCTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ZHObjectiveCTest";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AC29CB411D38044000C5FD8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A998EF43074D19FA13467EF /* Pods-ZHObjectiveCTest.release.xcconfig */;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ZHObjectiveCTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ZHObjectiveCTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -410,6 +614,15 @@
 			buildConfigurations = (
 				AC18A4541D09D3CD001A9D81 /* Debug */,
 				AC18A4551D09D3CD001A9D81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC29CB421D38044000C5FD8B /* Build configuration list for PBXNativeTarget "ZHObjectiveCTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC29CB401D38044000C5FD8B /* Debug */,
+				AC29CB411D38044000C5FD8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

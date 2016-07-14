@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>ZHObjectiveCTest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>AC18A44B1D09D3CD001A9D81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AC29CB3A1D38044000C5FD8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
