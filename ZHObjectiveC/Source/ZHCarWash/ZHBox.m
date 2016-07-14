@@ -28,8 +28,8 @@
 - (instancetype)init {
     self = [super init];
     self.mutableCars = [NSMutableArray object];
-    ZHCarWasher *washer = [ZHCarWasher object];
-    [self addWorker:washer];
+//    ZHCarWasher *washer = [ZHCarWasher object];
+//    [self addWorker:washer];
     
     return self;
 }
