@@ -16,9 +16,8 @@
     NSLog(@"Car washed  %f", self.money);
 }
 
-- (void)processObject:(id)object {
+- (void)performWorkWithObject:(id)object{
     [self washCar:object];
-    //[self.delegate workerDidFinishProcessingObject:self];
 }
 
 @end

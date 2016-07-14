@@ -50,12 +50,8 @@
 }
 
 - (void)processObject:(id)object {
-  ///
-}
-
-- (void)performWorkWithObject:(id)object {
     self.busy = YES;
-    [self processObject:object];
+    [self performWorkWithObject:object];
     
     id delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(workerDidFinishProcessingObject:)]) {
@@ -63,6 +59,10 @@
     }
     
     self.busy = NO;
+}
+
+- (void)performWorkWithObject:(id)object {
+    ///
 }
 
 @end

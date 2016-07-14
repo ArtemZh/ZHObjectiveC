@@ -14,7 +14,7 @@
     NSLog(@"Calculated Money %f", self.money);
 }
 
-- (void)processObject:(id)object {
+- (void)performWorkWithObject:(id)object {
     [self takeMoneyFromObject:object];
     [self calculateMoney];
 }

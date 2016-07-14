@@ -131,19 +131,13 @@
     while ((carToWash = [carsQueue dequeue])) {
         
         ZHCarWasher *washer = [self freeWasher];
-        ZHAccountant *accountant = [self freeAccountant];
-        ZHBoss *boss = [self freeDirector];
         ZHBox *box = [self freeCarWashRoom];
-        
-        //washer.delegate = accountant;
-        //accountant.delegate = boss;
+//        ZHAccountant *accountant = [self freeAccountant];
+//        ZHBoss *boss = [self freeDirector];
         
         [box addCar:carToWash];
-        [washer performWorkWithObject:carToWash];
+        [washer processObject:carToWash];
         [box removeCar:carToWash];
-        
-        //[accountant performWorkWithObject:washer];
-        //[boss performWorkWithObject:accountant];
     }
     
 }
