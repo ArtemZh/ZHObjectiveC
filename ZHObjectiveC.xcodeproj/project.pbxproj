@@ -12,6 +12,7 @@
 		AC4389321D3D49EA00A4A833 /* ZHClusterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC43892D1D3D49EA00A4A833 /* ZHClusterAlphabet.m */; };
 		AC4389331D3D49EA00A4A833 /* ZHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC43892F1D3D49EA00A4A833 /* ZHRangeAlphabet.m */; };
 		AC4389341D3D49EA00A4A833 /* ZHStringAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4389311D3D49EA00A4A833 /* ZHStringAlphabet.m */; };
+		AC4389371D3D4B5100A4A833 /* ZHObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4389361D3D4B5100A4A833 /* ZHObservableObject.m */; };
 		AC6E5CA51D3D3B1D00DFE179 /* ZHAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6E5CA41D3D3B1D00DFE179 /* ZHAlphabet.m */; };
 		AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4D61D21191900FAF721 /* ZHQueue.m */; };
 		AC91A4DC1D219E0D00FAF721 /* NSArray+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */; };
@@ -64,6 +65,8 @@
 		AC43892F1D3D49EA00A4A833 /* ZHRangeAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHRangeAlphabet.m; sourceTree = "<group>"; };
 		AC4389301D3D49EA00A4A833 /* ZHStringAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHStringAlphabet.h; sourceTree = "<group>"; };
 		AC4389311D3D49EA00A4A833 /* ZHStringAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHStringAlphabet.m; sourceTree = "<group>"; };
+		AC4389351D3D4B3800A4A833 /* ZHObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHObservableObject.h; sourceTree = "<group>"; };
+		AC4389361D3D4B5100A4A833 /* ZHObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHObservableObject.m; sourceTree = "<group>"; };
 		AC6E5CA41D3D3B1D00DFE179 /* ZHAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAlphabet.m; sourceTree = "<group>"; };
 		AC6E5CA61D3D3B4300DFE179 /* ZHAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAlphabet.h; sourceTree = "<group>"; };
 		AC91A4D61D21191900FAF721 /* ZHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHQueue.m; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */,
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
 				ACFC34111D0DACB200B83075 /* ZHCar.m */,
+				AC4389351D3D4B3800A4A833 /* ZHObservableObject.h */,
+				AC4389361D3D4B5100A4A833 /* ZHObservableObject.m */,
 				ACFC34141D0DAE1300B83075 /* ZHWorkers */,
 				ACFC34031D0DA67A00B83075 /* ZHBuilding */,
 			);
@@ -473,6 +478,7 @@
 				ACFC341D1D0DB10700B83075 /* ZHAccountant.m in Sources */,
 				AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */,
 				ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */,
+				AC4389371D3D4B5100A4A833 /* ZHObservableObject.m in Sources */,
 				ACFC34061D0DA6A500B83075 /* ZHBuilding.m in Sources */,
 				ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */,
 				AC18A4501D09D3CD001A9D81 /* main.m in Sources */,
