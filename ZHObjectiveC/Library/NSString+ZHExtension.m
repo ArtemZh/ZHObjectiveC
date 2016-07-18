@@ -10,42 +10,71 @@
 
 @implementation NSString (ZHExtension)
 
-//in methods need to remove duplicate code written below
-
-+ (instancetype)randomLowercaseStringwithLength:(NSUInteger)length {
++ (instancetype)randomStringWithLength:(NSUInteger)length
+                              alphabet:(NSString *)alphabet
+{
     NSMutableString *string = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0; i < length; i++){
-        NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
-        [string appendString:symbols];
+    for (NSUInteger index = 0; index < length; index ++) {
+        [string appendFormat:@"%c", [alphabet characterAtIndex:arc4random_uniform((u_int32_t)length)]];
     }
-    
-    NSLog(@"%@", string);
     
     return [self stringWithString:string];
 }
 
-+ (instancetype)randomStringwithLength:(NSUInteger)length {
-    NSMutableString *string = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0; i < length; i++){
-        NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'A'];
-        [string appendString:symbols];
++ (instancetype)alphabetWithUnicodeFirstSymbol:(unichar)firstSymbol
+                                    lastSymbol:(unichar)lastSymbol
+{
+    NSMutableString *result = [NSMutableString string];
+    NSUInteger headValue = MIN(firstSymbol, lastSymbol);
+    NSUInteger tailValue = MAX(firstSymbol, lastSymbol);
+    NSRange range = NSMakeRange(headValue, tailValue - headValue + 1);
+    for (NSUInteger index = range.location; index <= NSMaxRange(range); index ++) {
+        NSString *buffer = [[NSString alloc]initWithBytes:&index
+                                                   length:1
+                                                 encoding:NSUTF8StringEncoding];
+        [result appendString:buffer];
     }
     
-    NSLog(@"%@", string);
-    
-    return [self stringWithString:string];
+    return [self stringWithString:result];
 }
 
-+ (instancetype)randomNumericStringwithLength:(NSUInteger)length {
-    NSMutableString *string = [NSMutableString stringWithCapacity:length];
-    for (NSUInteger i = 0; i < length; i++){
-        NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(19) + '!'];
-        [string appendString:symbols];
++ (instancetype)alphanumericAlphabet {
+    NSMutableString *result = [NSMutableString stringWithString:[self letterAlphabet]];
+    [result appendString:[self numericAlphabet]];
+    
+    return [self stringWithString:result];
+}
+
++ (instancetype)numericAlphabet {
+    return [self alphabetWithUnicodeFirstSymbol:'0' lastSymbol:'9'];
+}
+
++ (instancetype)lowercaseLetterAlphabet {
+    return [self alphabetWithUnicodeFirstSymbol:'a' lastSymbol:'z'];
+}
+
++ (instancetype)capitalizedLetterAlphabet {
+    return [self alphabetWithUnicodeFirstSymbol:'A' lastSymbol:'Z'];
+}
+
++ (instancetype)letterAlphabet {
+    NSMutableString *result = [NSMutableString new];
+    [result appendString:[self lowercaseLetterAlphabet]];
+    [result appendString:[self capitalizedLetterAlphabet]];
+    
+    return [self stringWithString:result];
+}
+
+- (NSArray *)symbols {
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.length];
+    NSUInteger length = [self length];
+    
+    for (NSUInteger index = 0; index < length; index ++) {
+        unichar resultChar = [self characterAtIndex:index];
+        [result addObject:[NSString stringWithFormat:@"%c", resultChar]];
     }
     
-    NSLog(@"\n%@", string);
-    
-    return [self stringWithString:string];
+    return [[result copy] autorelease];
 }
 
 @end

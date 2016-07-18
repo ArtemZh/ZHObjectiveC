@@ -8,13 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-static const int      kZHDefaultStringLength = 10;
 @interface NSString (ZHExtension)
 
-+ (instancetype)randomLowercaseStringwithLength:(NSUInteger)length;
++ (instancetype)randomStringWithLength:(NSUInteger)length
+                              alphabet:(NSString *)alphabet;
 
-+ (instancetype)randomStringwithLength:(NSUInteger)length;
++ (instancetype)alphabetWithUnicodeFirstSymbol:(unichar)firstSymbol
+                                    lastSymbol:(unichar)lastSymbol;
 
-+ (instancetype)randomNumericStringwithLength:(NSUInteger)length;
++ (instancetype)alphanumericAlphabet;
++ (instancetype)numericAlphabet;
++ (instancetype)lowercaseLetterAlphabet;
++ (instancetype)capitalizedLetterAlphabet;
++ (instancetype)letterAlphabet;
+
+- (NSArray *)symbols;
 
 @end
