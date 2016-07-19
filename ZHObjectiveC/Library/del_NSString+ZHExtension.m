@@ -12,7 +12,7 @@
 
 //in methods need to remove duplicate code written below
 
-+ (instancetype)randomLowercaseStringwithLength:(NSUInteger)length {
++ (instancetype)randomLowercaseStringWithLength:(NSUInteger)length {
     NSMutableString *string = [NSMutableString stringWithCapacity:length];
     for (NSUInteger i = 0; i < length; i++){
         NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'a'];
@@ -24,7 +24,7 @@
     return [self stringWithString:string];
 }
 
-+ (instancetype)randomStringwithLength:(NSUInteger)length {
++ (instancetype)randomStringWithLength:(NSUInteger)length {
     NSMutableString *string = [NSMutableString stringWithCapacity:length];
     for (NSUInteger i = 0; i < length; i++){
         NSString *symbols = [NSString stringWithFormat:@"%c", arc4random_uniform(26) + 'A'];

@@ -14,5 +14,13 @@
 
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(NSObject *)observer;
+- (BOOL)containsObserver:(id)object;
+- (void)addObservers:(NSArray *)observers;
+- (void)removeObservers;
+
+- (SEL)selectorForState:(NSUInteger)state;
+
+- (void)notifyWithObject:(id)object ofState:(NSUInteger)state;
+- (void)setState:(NSUInteger)state withObject:(id)object;
 
 @end

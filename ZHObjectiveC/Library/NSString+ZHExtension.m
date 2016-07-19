@@ -8,6 +8,14 @@
 
 #import "NSString+ZHExtension.h"
 
+NSRange ZHCreateAlphabetRange(unichar value1, unichar value2) {
+    NSUInteger headValue = MIN(value1, value2);
+    NSUInteger railValue = MAX(value1, value2);
+    
+    return NSMakeRange(headValue, railValue - headValue + 1);
+}
+
+
 @implementation NSString (ZHExtension)
 
 + (instancetype)randomStringWithLength:(NSUInteger)length
@@ -25,9 +33,7 @@
                                     lastSymbol:(unichar)lastSymbol
 {
     NSMutableString *result = [NSMutableString string];
-    NSUInteger headValue = MIN(firstSymbol, lastSymbol);
-    NSUInteger tailValue = MAX(firstSymbol, lastSymbol);
-    NSRange range = NSMakeRange(headValue, tailValue - headValue + 1);
+    NSRange range = ZHCreateAlphabetRange(firstSymbol, lastSymbol);
     for (NSUInteger index = range.location; index <= NSMaxRange(range); index ++) {
         NSString *buffer = [[NSString alloc]initWithBytes:&index
                                                    length:1

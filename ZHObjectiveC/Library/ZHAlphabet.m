@@ -47,33 +47,25 @@ NSRange ZHCreateAlphabetRange(unichar value1, unichar value2) {
 - (instancetype)initWithRange:(NSRange)range {
     [self release];
     
-    ZHAlphabet *result = [[ZHRangeAlphabet alloc] initWithRange:range];
-    
-    return result;
+    return [[ZHRangeAlphabet alloc] initWithRange:range];
 }
 
 - (instancetype)initWithAlphabets:(NSArray *)alphabets {
     [self release];
     
-    ZHAlphabet *result = [[ZHClasterAlphabet alloc] initWithAlphabets:alphabets];
-    
-    return result;
+    return [[ZHClasterAlphabet alloc] initWithAlphabets:alphabets];
 }
 
 - (instancetype)initWithStrings:(NSArray *)strings {
     [self release];
     
-    ZHAlphabet *result = [[ZHStringAlphabet alloc] initWithStrings:strings];
-    
-    return result;
+    return [[ZHStringAlphabet alloc] initWithStrings:strings];
 }
 
 - (instancetype)initWithSymbols:(NSString *)string {
     [self release];
     
-    ZHAlphabet *result = [self initWithStrings:[string symbols]];
-    
-    return result;
+    return [self initWithStrings:[string symbols]];;
 }
 
 #pragma mark -
@@ -117,7 +109,7 @@ NSRange ZHCreateAlphabetRange(unichar value1, unichar value2) {
     
     if (0 != len) {
         for (NSUInteger index = 0; index < len; index ++) {
-            buffer[index] = ((NSArray *)self)[index + state->state];
+            buffer[index] = self[index + state->state];
         }
     }
     

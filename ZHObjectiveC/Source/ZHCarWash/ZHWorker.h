@@ -6,10 +6,27 @@
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
+#import "ZHObservableObject.h"
+
 #import "ZHMoneyTransferProtocol.h"
 #import "ZHWorkersDelegate.h"
 
 #import <Foundation/Foundation.h>
+
+typedef NS_ENUM(uint8_t, ZHWorkerState) {
+    ZHWorkerFree,
+    ZHWorkerBusy,
+    ZHWorkerIsPending
+};
+
+@protocol ZHWorkerObserver <NSObject>
+
+@optional
+- (void)workerBusy:(id)worker;
+- (void)workerIsPending:(id)worker;
+- (void)workerFree:(id)worker;
+
+@end
 
 @interface ZHWorker : NSObject <ZHMoneyTransferProtocol, ZHWorkersDelegate>
 @property (nonatomic, assign) float     income;
