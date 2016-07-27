@@ -19,8 +19,8 @@
     [self calculateProfit];
 }
 
-- (void)workerDidFinishProcessingObject:(id)worker {
-    [self processObject:worker];
+- (void)workerDidBecomeReadyForProcessing:(id)accountant {
+    [self processObject:accountant];
 }
 
 

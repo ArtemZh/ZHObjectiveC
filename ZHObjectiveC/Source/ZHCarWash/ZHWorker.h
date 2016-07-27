@@ -14,21 +14,21 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(uint8_t, ZHWorkerState) {
-    ZHWorkerFree,
-    ZHWorkerBusy,
-    ZHWorkerIsPending
+    ZHWorkerStateFree,
+    ZHWorkerStateBusy,
+    ZHWorkerStatePending
 };
 
 @protocol ZHWorkerObserver <NSObject>
 
 @optional
-- (void)workerBusy:(id)worker;
-- (void)workerIsPending:(id)worker;
-- (void)workerFree:(id)worker;
+- (void)workerDidBecomeReadyForProcessing:(id)worker;
+- (void)workerDidBecomeFree:(id)worker;
+- (void)workerDidBecomeBusy:(id)worker;
 
 @end
 
-@interface ZHWorker : NSObject <ZHMoneyTransferProtocol, ZHWorkersDelegate>
+@interface ZHWorker : ZHObservableObject <ZHMoneyTransferProtocol, ZHWorkersDelegate>
 @property (nonatomic, assign) float     income;
 @property (nonatomic, assign) NSInteger yearsOfExperience;
 
@@ -37,6 +37,7 @@ typedef NS_ENUM(uint8_t, ZHWorkerState) {
 
 - (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;
+- (void)finishProcessing;
 
 @end
 

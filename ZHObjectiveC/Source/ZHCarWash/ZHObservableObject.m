@@ -70,10 +70,6 @@
     }
 }
 
-- (void)removeObservers {
-    [self.observersTable removeAllObjects];
-}
-
 - (void)setState:(NSUInteger)state {
     if (state != _state) {
         _state = state;

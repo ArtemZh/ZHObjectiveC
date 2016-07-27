@@ -19,9 +19,10 @@
     [self calculateMoney];
 }
 
-- (void)workerDidFinishProcessingObject:(id)worker {
-    [self processObject:worker];
+- (void)workerDidBecomeReadyForProcessing:(id)washer {
+    [self processObject:washer];
 }
+
 
 
 @end

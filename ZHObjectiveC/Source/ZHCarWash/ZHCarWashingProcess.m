@@ -20,6 +20,8 @@
 #import "NSObject+ZHExtension.h"
 #import "NSArray+ZHExtension.h"
 
+static const NSUInteger kZHWashersCount  = 2;
+
 @interface ZHCarWashingProcess ()
 @property (nonatomic, retain) ZHBuilding        *washBuilding;
 @property (nonatomic, retain) ZHBuilding        *officeBuilding;
@@ -80,9 +82,10 @@
     [room addWorker:accountant];
     [room addWorker:boss];
     [officeBuilding addRoom:room];
-    
-    washer.delegate = accountant;
-    accountant.delegate = boss;
+    [washer addObservers:@[accountant, self]];
+    [accountant addObserver:@[boss, self]];
+//    washer.delegate = accountant;
+//    accountant.delegate = boss;
 }
 
 #pragma mark -
@@ -102,10 +105,9 @@
 
 - (id)reservedFreeWorkerWithClass:(Class)class {
     NSArray *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
-    workers = [workers filteredArrayUsingBlock:^BOOL(ZHWorker *worker) { return !worker.busy; }];
+    workers = [workers filteredArrayUsingBlock:^BOOL(ZHWorker *worker) { return ZHWorkerStateFree == worker.state; }];
     ZHWorker *freeWorker = [workers firstObject];
-    
-    freeWorker.busy = YES;
+    freeWorker.state = ZHWorkerStateBusy;
     
     return freeWorker;
 }
@@ -124,7 +126,6 @@
 - (void)washCar:(ZHCar *)car {
     ZHQueue *carsQueue = self.carsQueue;
     [carsQueue enqueue:car];
-    //test
     NSLog(@"Cars in carsQueue = %lu", carsQueue.count);
     
     ZHCar *carToWash = nil;
@@ -132,8 +133,6 @@
         
         ZHCarWasher *washer = [self freeWasher];
         ZHBox *box = [self freeCarWashRoom];
-//        ZHAccountant *accountant = [self freeAccountant];
-//        ZHBoss *boss = [self freeDirector];
         
         [box addCar:carToWash];
         [washer processObject:carToWash];

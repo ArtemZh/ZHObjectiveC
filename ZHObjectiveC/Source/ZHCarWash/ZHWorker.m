@@ -50,25 +50,33 @@
 }
 
 - (void)processObject:(id)object {
-    self.busy = YES;
     [self performWorkWithObject:object];
-    
-    id delegate = self.delegate;
-    if ([delegate respondsToSelector:@selector(workerDidFinishProcessingObject:)]) {
-        [self.delegate workerDidFinishProcessingObject:self];
-    }
-    
-    self.busy = NO;
+    self.state = ZHWorkerStatePending;
+    [self finishProcessing];
 }
+
+- (void)finishProcessing {
+    self.state = ZHWorkerStateFree;
+}
+
 
 - (void)performWorkWithObject:(id)object {
     ///
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
-    ///
-    
-    return 0;
+    switch (state) {
+        case ZHWorkerStateFree:
+            return @selector(workerDidBecomeFree:);
+            
+        case ZHWorkerStatePending:
+            return @selector(workerDidBecomeReadyForProcessing:);
+            
+        case ZHWorkerStateBusy:
+            return @selector(workerDidBecomeBusy:);
+            
+        default:
+            return [super selectorForState:state];
+    }
 }
-
 @end

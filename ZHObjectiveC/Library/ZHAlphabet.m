@@ -14,12 +14,12 @@
 
 #import "NSString+ZHExtension.h"
 
-NSRange ZHCreateAlphabetRange(unichar value1, unichar value2) {
-    NSUInteger headValue = MIN(value1, value2);
-    NSUInteger railValue = MAX(value1, value2);
-    
-    return NSMakeRange(headValue, railValue - headValue + 1);
-}
+//NSRange ZHCreateAlphabetRange(unichar value1, unichar value2) {
+//    NSUInteger headValue = MIN(value1, value2);
+//    NSUInteger railValue = MAX(value1, value2);
+//    
+//    return NSMakeRange(headValue, railValue - headValue + 1);
+//}
 
 @implementation ZHAlphabet
 
