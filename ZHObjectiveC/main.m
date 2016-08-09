@@ -13,6 +13,8 @@
 #import "ZHCarWashingProcess.h"
 #import "ZHQueue.h"
 
+static const NSUInteger kZHCarsCount = 10;
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
@@ -27,9 +29,12 @@ int main(int argc, const char * argv[]) {
 //        stringTest = [[NSString randomNumericStringwithLength:lenght] init ];
         
         ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
-        ZHCar *car = [ZHCar object];
         
-        [complex washCar:car];
+        for (NSUInteger count = 0; count < kZHCarsCount; count++) {
+            [complex washCar:[ZHCar object]];
+        }
+        
+        
         
         
         

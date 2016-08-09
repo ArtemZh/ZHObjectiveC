@@ -16,7 +16,7 @@
 typedef NS_ENUM(uint8_t, ZHWorkerState) {
     ZHWorkerStateFree,
     ZHWorkerStateBusy,
-    ZHWorkerStatePending
+    ZHWorkerStateReadyForProcessing
 };
 
 @protocol ZHWorkerObserver <NSObject>
@@ -29,15 +29,11 @@ typedef NS_ENUM(uint8_t, ZHWorkerState) {
 @end
 
 @interface ZHWorker : ZHObservableObject <ZHMoneyTransferProtocol, ZHWorkersDelegate>
-@property (nonatomic, assign) float     income;
-@property (nonatomic, assign) NSInteger yearsOfExperience;
-
-@property (nonatomic, assign)   BOOL        busy;
-@property (nonatomic, assign)   id<ZHWorkersDelegate>  delegate;
+@property (nonatomic, copy) NSString     *name;
+@property (nonatomic, assign)   BOOL     busy;
 
 - (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;
 - (void)finishProcessing;
 
 @end
-

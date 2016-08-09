@@ -7,8 +7,24 @@
 //
 
 #import "NSArray+ZHExtension.h"
+#import "NSObject+ZHExtension.h"
 
 @implementation NSArray (ZHExtensions)
+
++ (instancetype)arrayWithObjectsCount:(NSUInteger)count block:(id(^)())block {
+    if (!block) {
+        return nil;
+    }
+    
+    NSMutableArray *array = [NSMutableArray object];
+    
+    for (NSUInteger index = 0; index < count; index++) {
+        [array addObject:block()];
+    }
+    
+    return [self arrayWithArray:array];
+}
+
 
 - (NSArray *)filteredArrayUsingBlock:(ZHArrayFiltredUsingBlock)block {
     if (!block) {

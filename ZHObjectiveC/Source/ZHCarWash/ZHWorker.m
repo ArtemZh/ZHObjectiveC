@@ -25,7 +25,6 @@
 
 - (instancetype)init {
     self = [super init];
-    self.yearsOfExperience = ZHRandomIntegerWithinGivenLimits(1, 5);
     
     return self;
 }
@@ -50,13 +49,13 @@
 }
 
 - (void)processObject:(id)object {
+    self.state = ZHWorkerStateBusy;
     [self performWorkWithObject:object];
-    self.state = ZHWorkerStatePending;
     [self finishProcessing];
 }
 
 - (void)finishProcessing {
-    self.state = ZHWorkerStateFree;
+    self.state = ZHWorkerStateReadyForProcessing;
 }
 
 
@@ -64,12 +63,16 @@
     ///
 }
 
+- (void)workerDidBecomeReadyForProcessing:(id)object {
+    [self processObject:object];
+}
+
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
         case ZHWorkerStateFree:
             return @selector(workerDidBecomeFree:);
             
-        case ZHWorkerStatePending:
+        case ZHWorkerStateReadyForProcessing:
             return @selector(workerDidBecomeReadyForProcessing:);
             
         case ZHWorkerStateBusy:

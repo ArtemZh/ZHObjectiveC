@@ -12,6 +12,7 @@ typedef BOOL(^ZHArrayFiltredUsingBlock)(id object);
 
 @interface NSArray (ZHExtensions)
 
++ (instancetype)arrayWithObjectsCount:(NSUInteger)count block:(id(^)())block;
 - (NSArray *)filteredArrayUsingBlock:(ZHArrayFiltredUsingBlock)block;
 
 @end

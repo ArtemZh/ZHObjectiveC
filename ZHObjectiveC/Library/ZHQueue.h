@@ -13,5 +13,6 @@
 
 - (void)enqueue:(id)object;
 - (id)dequeue;
+- (void)enqueueObjects:(NSArray *)objects;
 
 @end

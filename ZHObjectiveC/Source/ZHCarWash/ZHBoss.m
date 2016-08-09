@@ -7,6 +7,7 @@
 //
 
 #import "ZHBoss.h"
+#import "ZHAccountant.h"
 
 @implementation ZHBoss
 
@@ -14,13 +15,18 @@
     NSLog(@"Profit = %f", self.money);
 }
 
-- (void)performWorkWithObject:(id)object {
+- (void)performWorkWithObject:(ZHAccountant *)object {
     [self takeMoneyFromObject:object];
+    object.state = ZHWorkerStateFree;
     [self calculateProfit];
 }
 
 - (void)workerDidBecomeReadyForProcessing:(id)accountant {
     [self processObject:accountant];
+}
+
+- (void)finishProcessing {
+    self.state = ZHWorkerStateFree;
 }
 
 

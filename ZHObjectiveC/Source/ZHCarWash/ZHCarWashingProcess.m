@@ -8,9 +8,6 @@
 
 #import "ZHCarWashingProcess.h"
 
-#import "ZHBuilding.h"
-#import "ZHRoom.h"
-#import "ZHBox.h"
 #import "ZHCarWasher.h"
 #import "ZHQueue.h"
 #import "ZHCar.h"
@@ -21,22 +18,16 @@
 #import "NSArray+ZHExtension.h"
 
 static const NSUInteger kZHWashersCount  = 2;
+static const NSString *kZHWasherName = @"CarWasher";
 
 @interface ZHCarWashingProcess ()
-@property (nonatomic, retain) ZHBuilding        *washBuilding;
-@property (nonatomic, retain) ZHBuilding        *officeBuilding;
+@property (nonatomic, retain) ZHBoss            *boss;
+@property (nonatomic, retain) ZHAccountant      *accountant;
+@property (nonatomic, retain) NSMutableArray    *washers;
 @property (nonatomic, retain) ZHQueue           *carsQueue;
+@property (nonatomic, retain) ZHQueue           *washersQueue;
 
 - (void)initInfrastructure;
-
-- (id)freeWasher;
-- (id)freeAccountant;
-- (id)freeDirector;
-
-- (id)reservedFreeWorkerWithClass:(Class)class;
-- (ZHBuilding *)buildingForWorkerWithClass:(Class)class;
-
-- (ZHBox *)freeCarWashRoom;
 
 @end
 
@@ -46,9 +37,12 @@ static const NSUInteger kZHWashersCount  = 2;
 #pragma mark Deallocation / Initialisation
 
 - (void)dealloc {
-    self.officeBuilding = nil;
-    self.washBuilding = nil;
+ //   [self removeWorkersObservers];
+    self.boss = nil;
+    self.accountant = nil;
+    self.washers = nil;
     self.carsQueue = nil;
+    self.washersQueue = nil;
     
     [super dealloc];
 }
@@ -56,72 +50,46 @@ static const NSUInteger kZHWashersCount  = 2;
 - (instancetype)init {
     self = [super init];
     
-    self.carsQueue = [ZHQueue object];
     [self initInfrastructure];
     
     return self;
 }
 
 - (void)initInfrastructure {
-    ZHCarWasher *washer = [ZHCarWasher object];
-    ZHAccountant *accountant = [ZHAccountant object];
+    [self initWorkers];
+    [self initQueues];
+}
+
+- (void)initWorkers {
+    self.washers = [NSMutableArray array];
     ZHBoss *boss = [ZHBoss object];
+    self.boss = boss;
+    ZHAccountant *accountant = [ZHAccountant object];
+    self.accountant = accountant;
+    [accountant addObserver:boss];
     
-    ZHBuilding *officeBuilding = [ZHBuilding object];
-    self.officeBuilding = officeBuilding;
-    
-    ZHBuilding *washBuilding = [ZHBuilding object];
-    self.washBuilding = washBuilding;
-    
-    ZHBox *box = [ZHBox object];
-    ZHRoom *room = [ZHRoom object];
-    
-    [box addWorker:washer];
-    [washBuilding addRoom:box];
-    
-    [room addWorker:accountant];
-    [room addWorker:boss];
-    [officeBuilding addRoom:room];
-    [washer addObservers:@[accountant, self]];
-    [accountant addObserver:@[boss, self]];
-//    washer.delegate = accountant;
-//    accountant.delegate = boss;
+    __block NSUInteger iterator = 0;
+    NSArray *washerObservers = @[accountant, self];
+    self.washers = [NSMutableArray arrayWithObjectsCount:kZHWashersCount block:^{
+        ZHCarWasher *washer = [ZHCarWasher object];
+        [washer addObservers:washerObservers];
+        washer.name = [NSString stringWithFormat:@"%@%lu", kZHWasherName, (unsigned long)iterator++];
+        
+        return washer;
+    }];
+}
+
+- (void)initQueues {
+    ZHQueue *washersQueue = [ZHQueue object];
+    self.washersQueue = washersQueue;
+    [washersQueue enqueueObjects:self.washers];
+    self.carsQueue = [ZHQueue object];
 }
 
 #pragma mark -
 #pragma mark Public Implementation
 
-- (id)freeWasher {
-    return [self reservedFreeWorkerWithClass:[ZHCarWasher class]];
-}
 
-- (id)freeAccountant {
-    return [self reservedFreeWorkerWithClass:[ZHAccountant class]];
-}
-
-- (id)freeDirector {
-    return [self reservedFreeWorkerWithClass:[ZHBoss class]];
-}
-
-- (id)reservedFreeWorkerWithClass:(Class)class {
-    NSArray *workers = [[self buildingForWorkerWithClass:class] workersWithClass:class];
-    workers = [workers filteredArrayUsingBlock:^BOOL(ZHWorker *worker) { return ZHWorkerStateFree == worker.state; }];
-    ZHWorker *freeWorker = [workers firstObject];
-    freeWorker.state = ZHWorkerStateBusy;
-    
-    return freeWorker;
-}
-
-- (ZHBuilding *)buildingForWorkerWithClass:(Class)class {
-    return [class isSubclassOfClass:[ZHCarWasher class]] ? self.washBuilding : self.officeBuilding;
-}
-
-- (ZHBox *)freeCarWashRoom {
-    NSArray *rooms = [self.washBuilding roomsWithClass:[ZHBox class]];
-    rooms = [rooms filteredArrayUsingBlock:^BOOL(ZHBox *room) { return !room.cars; }];
-    
-    return [rooms firstObject];
-}
 
 - (void)washCar:(ZHCar *)car {
     ZHQueue *carsQueue = self.carsQueue;
@@ -130,16 +98,19 @@ static const NSUInteger kZHWashersCount  = 2;
     
     ZHCar *carToWash = nil;
     while ((carToWash = [carsQueue dequeue])) {
-        
-        ZHCarWasher *washer = [self freeWasher];
-        ZHBox *box = [self freeCarWashRoom];
-        
-        [box addCar:carToWash];
+        ZHCarWasher *washer = [self.washersQueue dequeue];
         [washer processObject:carToWash];
-        [box removeCar:carToWash];
     }
     
 }
 
+- (void)workerDidBecomeFree:(ZHWorker *)worker {
+    ZHCar *car = [self.carsQueue dequeue];
+    if (car) {
+        [worker processObject:car];
+    } else {
+        [self.washersQueue enqueue:worker];
+    }
+}
 
 @end

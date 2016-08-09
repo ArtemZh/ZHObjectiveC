@@ -65,4 +65,11 @@
     return object;
 }
 
+- (void)enqueueObjects:(NSArray *)objects {
+    @synchronized (self) {
+        [self.queue addObjectsFromArray:objects];
+    }
+}
+
+
 @end

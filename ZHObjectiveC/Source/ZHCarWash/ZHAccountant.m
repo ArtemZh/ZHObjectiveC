@@ -7,6 +7,7 @@
 //
 
 #import "ZHAccountant.h"
+#import "ZHCarWasher.h"
 
 @implementation ZHAccountant
 
@@ -14,8 +15,9 @@
     NSLog(@"Calculated Money %f", self.money);
 }
 
-- (void)performWorkWithObject:(id)object {
+- (void)performWorkWithObject:(ZHCarWasher *)object {
     [self takeMoneyFromObject:object];
+    object.state = ZHWorkerStateFree;
     [self calculateMoney];
 }
 

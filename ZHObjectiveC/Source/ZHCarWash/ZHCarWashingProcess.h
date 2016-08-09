@@ -6,7 +6,6 @@
 //  Copyright © 2016 Artem Zhavrotskiy. All rights reserved.
 //
 
-#import "ZHBuilding.h"
 #import "ZHCar.h"
 
 #import <Foundation/Foundation.h>
