@@ -17,7 +17,7 @@
 #import "NSObject+ZHExtension.h"
 #import "NSArray+ZHExtension.h"
 
-static const NSUInteger kZHWashersCount  = 2;
+static const NSUInteger kZHWashersCount  = 1;
 static const NSString *kZHWasherName = @"CarWasher";
 
 @interface ZHCarWashingProcess ()
@@ -63,8 +63,10 @@ static const NSString *kZHWasherName = @"CarWasher";
 - (void)initWorkers {
     self.washers = [NSMutableArray array];
     ZHBoss *boss = [ZHBoss object];
+    boss.name = @"boss";
     self.boss = boss;
     ZHAccountant *accountant = [ZHAccountant object];
+    accountant.name = @"accountant";
     self.accountant = accountant;
     [accountant addObserver:boss];
     
@@ -92,14 +94,11 @@ static const NSString *kZHWasherName = @"CarWasher";
 
 
 - (void)washCar:(ZHCar *)car {
-    ZHQueue *carsQueue = self.carsQueue;
-    [carsQueue enqueue:car];
-    NSLog(@"Cars in carsQueue = %lu", carsQueue.count);
-    
-    ZHCar *carToWash = nil;
-    while ((carToWash = [carsQueue dequeue])) {
-        ZHCarWasher *washer = [self.washersQueue dequeue];
-        [washer processObject:carToWash];
+    ZHCarWasher *washer = [self.washersQueue dequeue];
+    if (washer) {
+        [washer processObject:car];
+    } else {
+        [self.carsQueue enqueue:car];
     }
     
 }

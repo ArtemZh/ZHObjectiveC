@@ -13,32 +13,25 @@
 #import "ZHCarWashingProcess.h"
 #import "ZHQueue.h"
 
-static const NSUInteger kZHCarsCount = 10;
+static const NSUInteger kZHCarsCount = 2;
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
-//        ZHCreatureTest *test = [[ZHCreatureTest new] autorelease];
-//        
-//        [test ZHCreatureTest];
-//        
-//        int lenght = kZHDefaultStringLength;
-//        
-//        NSString *stringTest = [[NSString randomLowercaseStringwithLength:lenght] init ];
-//        NSLog(@" %@", stringTest);
-//        stringTest = [[NSString randomNumericStringwithLength:lenght] init ];
         
         ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
         
         for (NSUInteger count = 0; count < kZHCarsCount; count++) {
             [complex washCar:[ZHCar object]];
+            NSLog(@"add car to queue %lu", count);
         }
         
-        
+        [[NSRunLoop mainRunLoop] run];
         
         
         
         
     }
+    
     return 0;
 }

@@ -17,14 +17,8 @@
 
 - (void)performWorkWithObject:(ZHCarWasher *)object {
     [self takeMoneyFromObject:object];
-    object.state = ZHWorkerStateFree;
     [self calculateMoney];
+    NSLog(@"%@ took money from %@", self.name, object.name);
 }
-
-- (void)workerDidBecomeReadyForProcessing:(id)washer {
-    [self processObject:washer];
-}
-
-
 
 @end

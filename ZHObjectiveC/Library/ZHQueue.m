@@ -38,31 +38,37 @@
 #pragma mark Accessors
 
 - (NSUInteger)count {
-    return self.queue.count;
+    @synchronized (self.queue) {
+        return self.queue.count;
+    }
+    
 }
 
 #pragma mark -
 #pragma mark Public Methods
 
 - (void)enqueue:(id)object {
-    NSMutableArray *queue = self.queue;
-    if (![queue containsObject:object]) {
-        [queue addObject:object];
-        NSLog(@"Test");
+    @synchronized (self.queue) {
+        NSMutableArray *queue = self.queue;
+        if (![queue containsObject:object]) {
+            [queue addObject:object];
+            NSLog(@"enqueue%@", object);
+        }
     }
-//    [queue addObject:object];
 }
 
 - (id)dequeue {
-    NSMutableArray *objects = self.queue;
-    if (!objects.count) {
-        return nil;
+    @synchronized (self.queue) {
+        NSMutableArray *objects = self.queue;
+        if (!objects.count) {
+            return nil;
+        }
+        
+        id object = [[[objects firstObject] retain] autorelease];
+        [objects removeObject:object];
+        NSLog(@"dequeue %@", object);
+        return object;
     }
-    
-    id object = [[[objects firstObject] retain] autorelease];
-    [objects removeObject:object];
-    NSLog(@"Test");
-    return object;
 }
 
 - (void)enqueueObjects:(NSArray *)objects {

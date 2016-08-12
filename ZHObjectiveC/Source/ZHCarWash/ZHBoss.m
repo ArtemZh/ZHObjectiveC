@@ -12,22 +12,16 @@
 @implementation ZHBoss
 
 - (void)calculateProfit {
-    NSLog(@"Profit = %f", self.money);
+    NSLog(@" %@ earned a profit = %f", self.name, self.money);
 }
 
 - (void)performWorkWithObject:(ZHAccountant *)object {
     [self takeMoneyFromObject:object];
-    object.state = ZHWorkerStateFree;
     [self calculateProfit];
-}
-
-- (void)workerDidBecomeReadyForProcessing:(id)accountant {
-    [self processObject:accountant];
 }
 
 - (void)finishProcessing {
     self.state = ZHWorkerStateFree;
 }
-
 
 @end
