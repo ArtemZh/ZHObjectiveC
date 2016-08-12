@@ -12,7 +12,7 @@
 @implementation ZHAccountant
 
 - (void)calculateMoney {
-    NSLog(@"Calculated Money %f", self.money);
+    NSLog(@"%@ Calculated Money %f", self.name, self.money);
 }
 
 - (void)performWorkWithObject:(ZHCarWasher *)object {

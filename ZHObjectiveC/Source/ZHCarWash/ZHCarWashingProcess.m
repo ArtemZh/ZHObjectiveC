@@ -94,22 +94,24 @@ static const NSString *kZHWasherName = @"CarWasher";
 
 
 - (void)washCar:(ZHCar *)car {
-    ZHCarWasher *washer = [self.washersQueue dequeue];
-    if (washer) {
-        [washer processObject:car];
-    } else {
-        [self.carsQueue enqueue:car];
+    if (car) {
+        ZHCarWasher *washer = [self.washersQueue dequeue];
+        if (washer) {
+            [washer processObject:car];
+        } else {
+            [self.carsQueue enqueue:car];
+        }
     }
     
 }
 
-- (void)workerDidBecomeFree:(ZHWorker *)worker {
-    ZHCar *car = [self.carsQueue dequeue];
-    if (car) {
-        [worker processObject:car];
-    } else {
-        [self.washersQueue enqueue:worker];
-    }
-}
+//- (void)workerDidBecomeFree:(ZHWorker *)worker {
+//    ZHCar *car = [self.carsQueue dequeue];
+//    if (car) {
+//        [worker processObject:car];
+//    } else {
+//        [self.washersQueue enqueue:worker];
+//    }
+//}
 
 @end
