@@ -18,6 +18,7 @@
 		AC91A4DC1D219E0D00FAF721 /* NSArray+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */; };
 		ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7F81D197D67002C38BD /* NSString+ZHExtension.m */; };
 		ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */; };
+		ACE74C7F1D636D18000530C7 /* ZHWorkersDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */; };
 		ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */; };
 		ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FA1D0DA64600B83075 /* ZHCreature.m */; };
 		ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC33FC1D0DA64600B83075 /* ZHCreatureFemale.m */; };
@@ -75,6 +76,8 @@
 		ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHExtension.h"; sourceTree = "<group>"; };
 		ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCarWashingProcess.m; sourceTree = "<group>"; };
 		ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCarWashingProcess.h; sourceTree = "<group>"; };
+		ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWorkersDispatcher.m; sourceTree = "<group>"; };
+		ACE74C801D636D42000530C7 /* ZHWorkersDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWorkersDispatcher.h; sourceTree = "<group>"; };
 		ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZHExtension.h"; sourceTree = "<group>"; };
 		ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZHExtension.m"; sourceTree = "<group>"; };
 		ACFC33F91D0DA64600B83075 /* ZHCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCreature.h; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				ACFC34131D0DAD3000B83075 /* ZHConstants.h */,
 				ACFC34241D0DB61E00B83075 /* ZHMoneyTransferProtocol.h */,
 				AC91A4D91D21963700FAF721 /* ZHWorkersDelegate.h */,
+				ACE74C801D636D42000530C7 /* ZHWorkersDispatcher.h */,
+				ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */,
 				ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */,
 				ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */,
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
@@ -458,6 +463,7 @@
 				AC4389371D3D4B5100A4A833 /* ZHObservableObject.m in Sources */,
 				ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */,
 				AC18A4501D09D3CD001A9D81 /* main.m in Sources */,
+				ACE74C7F1D636D18000530C7 /* ZHWorkersDispatcher.m in Sources */,
 				AC4389331D3D49EA00A4A833 /* ZHRangeAlphabet.m in Sources */,
 				ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */,
 				AC4389341D3D49EA00A4A833 /* ZHStringAlphabet.m in Sources */,

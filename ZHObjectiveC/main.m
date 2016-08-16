@@ -13,7 +13,7 @@
 #import "ZHCarWashingProcess.h"
 #import "ZHQueue.h"
 
-static const NSUInteger kZHCarsCount = 2;
+static const NSUInteger kZHCarsCount = 3;
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -21,9 +21,9 @@ int main(int argc, const char * argv[]) {
         
         ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
         
-        for (NSUInteger count = 0; count < kZHCarsCount; count++) {
+        for (NSUInteger count = 1; count < kZHCarsCount+1; count++) {
             [complex washCar:[ZHCar object]];
-            NSLog(@"add car to queue %lu", count);
+           // NSLog(@"add car to queue %lu", count);
         }
         
         [[NSRunLoop mainRunLoop] run];

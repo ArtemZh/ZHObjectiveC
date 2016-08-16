@@ -52,7 +52,7 @@
         NSMutableArray *queue = self.queue;
         if (![queue containsObject:object]) {
             [queue addObject:object];
-            NSLog(@"enqueue%@", object);
+            //NSLog(@"enqueue%@", object);
         }
     }
 }
@@ -66,7 +66,7 @@
         
         id object = [[[objects firstObject] retain] autorelease];
         [objects removeObject:object];
-        NSLog(@"dequeue %@", object);
+        //NSLog(@"dequeue %@", object);
         return object;
     }
 }

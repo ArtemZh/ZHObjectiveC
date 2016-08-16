@@ -60,18 +60,20 @@
     [self receiveMoney:money];
 }
 
+- (void)processObject:(id)object {
+    @synchronized (self) {
+         NSLog(@"%@ self.state = StateBusy", self.name);
+        self.state = ZHWorkerStateBusy;
+        [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+    }
+}
+
 - (void)startProcessingObject:(id)object {
-   // NSLog(@"%@ self performSelectorInBackground", self.name);
+    NSLog(@"%@ self performSelectorInBackground", self.name);
     [self performWorkWithObject:object];
     [self performSelectorOnMainThread:@selector(finishProcessingOnMainThreadWithObject:)
                            withObject:object
                         waitUntilDone:NO];
-}
-- (void)processObject:(id)object {
-   // NSLog(@"%@ self.state = ZHWorkerStateBusy", self.name);
-    self.state = ZHWorkerStateBusy;
-    [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
-    [self finishProcessing];
 }
 
 - (void)finishProcessingOnMainThreadWithObject:(id)object {
@@ -91,12 +93,12 @@
 }
 
 - (void)finishProcessingObject:(ZHWorker *)worker {
-   // NSLog(@"%@ self.state = ZHWorkerStateFree", self.name);
+    NSLog(@"%@ self.state = StateFree", self.name);
     self.state = ZHWorkerStateFree;
 }
 
 - (void)finishProcessing {
-  //  NSLog(@"%@ self.state = ZHWorkerStateReadyForProcessing", self.name);
+    NSLog(@"%@ self.state = StateReadyForProcessing", self.name);
     self.state = ZHWorkerStateReadyForProcessing;
 }
 
@@ -105,7 +107,9 @@
 }
 
 - (void)workerDidBecomeReadyForProcessing:(id)object {
-    [self processObject:object];
+    @synchronized (self) {
+            [self processObject:object];
+    }
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -121,6 +125,18 @@
             
         default:
             return [super selectorForState:state];
+    }
+}
+
+-(void)setState:(NSUInteger)state {
+    @synchronized (self) {
+        if (state == ZHWorkerStateFree && self.queue.count) {
+            [self processObject:[self.queue dequeue]];
+            
+            return;
+        }
+        
+        [super setState:state];
     }
 }
 
