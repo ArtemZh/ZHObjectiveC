@@ -55,21 +55,27 @@
 }
 
 - (void)takeMoneyFromObject:(id<ZHMoneyTransferProtocol>)owner {
-    float money = owner.money;
-    [owner giveMoney:money];
-    [self receiveMoney:money];
+    @synchronized (owner) {
+        float money = owner.money;
+        [owner giveMoney:money];
+        [self receiveMoney:money];
+
+    }
 }
 
 - (void)processObject:(id)object {
     @synchronized (self) {
-         NSLog(@"%@ self.state = StateBusy", self.name);
-        self.state = ZHWorkerStateBusy;
-        [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+        if (self.state == ZHWorkerStateFree) {
+            self.state = ZHWorkerStateBusy;
+            [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+        } else {
+            [self.queue enqueue:object];
+        }
     }
 }
 
 - (void)startProcessingObject:(id)object {
-    NSLog(@"%@ self performSelectorInBackground", self.name);
+    NSLog(@"%@ performSelectorInBackground", self.name);
     [self performWorkWithObject:object];
     [self performSelectorOnMainThread:@selector(finishProcessingOnMainThreadWithObject:)
                            withObject:object
@@ -81,6 +87,7 @@
         [self finishProcessingObject:object];
     }
     @synchronized(self) {
+        
         ZHQueue *objectsQueue = self.queue;
         if ([objectsQueue count] > 0 ) {
             id object = [objectsQueue dequeue];
@@ -93,8 +100,8 @@
 }
 
 - (void)finishProcessingObject:(ZHWorker *)worker {
-    NSLog(@"%@ self.state = StateFree", self.name);
-    self.state = ZHWorkerStateFree;
+    NSLog(@"%@ self.state = StateFree", worker.name);
+    worker.state = ZHWorkerStateFree;
 }
 
 - (void)finishProcessing {

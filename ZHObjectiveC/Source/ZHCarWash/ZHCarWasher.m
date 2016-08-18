@@ -12,12 +12,15 @@
 
 - (void)washCar:(ZHCar *)car {
     [self takeMoneyFromObject:car];
-    car.status = ZHCarClean;
     NSLog(@"Car washed  %f", self.money);
 }
 
 - (void)performWorkWithObject:(id)object{
     [self washCar:object];
+}
+
+- (void)finishProcessingObject:(ZHCar *)car {
+    car.status = ZHCarClean;
 }
 
 @end

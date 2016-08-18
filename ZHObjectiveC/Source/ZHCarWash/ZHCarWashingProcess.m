@@ -17,7 +17,7 @@
 #import "NSObject+ZHExtension.h"
 #import "NSArray+ZHExtension.h"
 
-static const NSUInteger kZHWashersCount  = 1;
+static const NSUInteger kZHWashersCount  = 2;
 static const NSString *kZHWasherName = @"CarWasher";
 
 @interface ZHCarWashingProcess ()
