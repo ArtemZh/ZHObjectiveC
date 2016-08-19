@@ -37,7 +37,7 @@ typedef NS_ENUM(uint8_t, ZHWorkerState) {
 
 - (void)finishProcessing;
 - (void)finishProcessingObject:(id)object;
-- (void)startProcessingObject:(id)object;
+- (void)processingObjectInBackground:(id)object;
 
 
 @end

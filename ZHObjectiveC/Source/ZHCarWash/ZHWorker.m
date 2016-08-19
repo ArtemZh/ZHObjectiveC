@@ -55,26 +55,28 @@
 }
 
 - (void)takeMoneyFromObject:(id<ZHMoneyTransferProtocol>)owner {
+    float money = owner.money;
+    [self receiveMoney:money];
+    
     @synchronized (owner) {
-        float money = owner.money;
         [owner giveMoney:money];
-        [self receiveMoney:money];
-
     }
+    
+    
 }
 
 - (void)processObject:(id)object {
     @synchronized (self) {
         if (self.state == ZHWorkerStateFree) {
             self.state = ZHWorkerStateBusy;
-            [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+            [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
         } else {
             [self.queue enqueue:object];
         }
     }
 }
 
-- (void)startProcessingObject:(id)object {
+- (void)processingObjectInBackground:(id)object {
     NSLog(@"%@ performSelectorInBackground", self.name);
     [self performWorkWithObject:object];
     [self performSelectorOnMainThread:@selector(finishProcessingOnMainThreadWithObject:)
@@ -92,7 +94,7 @@
         if ([objectsQueue count] > 0 ) {
             id object = [objectsQueue dequeue];
             
-            [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+            [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
         } else {
             [self finishProcessing];
         }
@@ -103,7 +105,7 @@
     id object = nil;
     if (worker.state == ZHWorkerStateReadyForProcessing && (object = [worker.queue dequeue])) {
         worker.state = ZHWorkerStateBusy;
-        [self performSelectorInBackground:@selector(startProcessingObject:) withObject:object];
+        [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
         
         return;
     }
@@ -122,9 +124,7 @@
 }
 
 - (void)workerDidBecomeReadyForProcessing:(id)object {
-    @synchronized (self) {
-            [self processObject:object];
-    }
+        [self processObject:object];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -143,16 +143,18 @@
     }
 }
 
-//-(void)setState:(NSUInteger)state {
-//    @synchronized (self) {
-//        if (state == ZHWorkerStateFree && self.queue.count) {
-//            [self processObject:[self.queue dequeue]];
-//            
-//            return;
-//        }
-//        
-//        [super setState:state];
-//    }
-//}
+-(void)setState:(NSUInteger)state {
+    @synchronized (self) {
+        if (state == ZHWorkerStateFree && self.queue.count) {
+            [super setState:ZHWorkerStateBusy];
+            [self performSelectorInBackground:@selector(processingObjectInBackground:)
+                                   withObject:[self.queue dequeue]];
+            
+            return;
+        }
+        
+        [super setState:state];
+    }
+}
 
 @end

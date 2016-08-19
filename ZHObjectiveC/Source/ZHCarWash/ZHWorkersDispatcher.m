@@ -14,8 +14,8 @@
 @interface ZHWorkersDispatcher ()
 
 @property (nonatomic, retain) NSMutableArray    *mutableProcessors;
-@property (nonatomic, retain) ZHQueue   *objectsForProcess;
-@property (nonatomic, retain) ZHQueue   *freeProcessors;
+@property (nonatomic, retain) ZHQueue           *objectsForProcess;
+@property (nonatomic, retain) ZHQueue           *freeProcessors;
 
 @end
 
@@ -34,6 +34,8 @@
 - (void)dealloc {
     self.objectsForProcess = nil;
     self.freeProcessors = nil;
+    
+    [self removeProcessors:self.processors];
     self.mutableProcessors = nil;
     
     [super dealloc];

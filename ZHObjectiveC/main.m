@@ -13,7 +13,7 @@
 #import "ZHCarWashingProcess.h"
 #import "ZHQueue.h"
 
-static const NSUInteger kZHCarsCount = 5;
+static const NSUInteger kZHCarsCount = 6;
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
