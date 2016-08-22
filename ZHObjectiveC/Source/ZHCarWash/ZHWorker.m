@@ -21,6 +21,12 @@
 
 @implementation ZHWorker
 
+#pragma mark Class methods
+
++ (instancetype)processorWithName:(NSString *)name {
+    return [[[self alloc] initProcessorWithName:name] autorelease];
+}
+
 #pragma mark -
 #pragma mark initialize / deallocate
 
@@ -33,6 +39,13 @@
 - (instancetype)init {
     self = [super init];
     self.queue = [ZHQueue object];
+    
+    return self;
+}
+
+- (instancetype)initProcessorWithName:name {
+    self = [super init];
+    self.name = name;
     
     return self;
 }
@@ -69,8 +82,6 @@
         if (self.state == ZHWorkerStateFree) {
             self.state = ZHWorkerStateBusy;
             [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
-        } else {
-            [self.queue enqueue:object];
         }
     }
 }
@@ -87,28 +98,11 @@
     @synchronized (object) {
         [self finishProcessingObject:object];
     }
-    @synchronized(self) {
-        
-        ZHQueue *objectsQueue = self.queue;
-        if ([objectsQueue count] > 0 ) {
-            id object = [objectsQueue dequeue];
-            
-            [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
-        } else {
-            [self finishProcessing];
-        }
-    }
+    
+    [self finishProcessing];
 }
 
 - (void)finishProcessingObject:(ZHWorker *)worker {
-    id object = nil;
-    if (worker.state == ZHWorkerStateReadyForProcessing && (object = [worker.queue dequeue])) {
-        worker.state = ZHWorkerStateBusy;
-        [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
-        
-        return;
-    }
-    
     NSLog(@"%@ self.state = StateFree", worker.name);
     worker.state = ZHWorkerStateFree;
 }
@@ -142,18 +136,18 @@
     }
 }
 
--(void)setState:(NSUInteger)state {
-    @synchronized (self) {
-        if (state == ZHWorkerStateFree && self.queue.count) {
-            [super setState:ZHWorkerStateBusy];
-            [self performSelectorInBackground:@selector(processObjectInBackground:)
-                                   withObject:[self.queue dequeue]];
-            
-            return;
-        }
-        
-        [super setState:state];
-    }
-}
+//-(void)setState:(NSUInteger)state {
+//    @synchronized (self) {
+//        if (state == ZHWorkerStateFree && self.queue.count) {
+//            [super setState:ZHWorkerStateBusy];
+//            [self performSelectorInBackground:@selector(processObjectInBackground:)
+//                                   withObject:[self.queue dequeue]];
+//            
+//            return;
+//        }
+//        
+//        [super setState:state];
+//    }
+//}
 
 @end

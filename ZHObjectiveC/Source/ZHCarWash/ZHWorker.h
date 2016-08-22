@@ -32,6 +32,8 @@ typedef NS_ENUM(uint8_t, ZHWorkerState) {
 @property (nonatomic, copy) NSString     *name;
 @property (nonatomic, assign)   BOOL     busy;
 
++ (instancetype)processorWithName:(NSString *)name;
+
 - (void)processObject:(id)object;
 - (void)performWorkWithObject:(id)object;
 

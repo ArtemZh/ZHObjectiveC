@@ -16,16 +16,25 @@
 
 #import "NSObject+ZHExtension.h"
 #import "NSArray+ZHExtension.h"
+#import "ZHObservableObject.h"
+#import "ZHWorkersDispatcher.h"
 
-static const NSUInteger kZHWashersCount  = 2;
-static const NSString *kZHWasherName = @"CarWasher";
+static const NSUInteger kZHWashersCount  = 1;
+static const NSUInteger kZHAccountantsCount = 1;
+static const NSUInteger kZHBossCount = 1;
+
+static NSString *kZHWasherName       = @"CarWasher";
+static NSString *kZHAccountantName   = @"Accountant";
+static NSString *kZHBossName         = @"Boss";
+
+
+typedef NSArray *(^ZHWorkersFactory)(Class class, NSUInteger count, id observer, NSString *name);
 
 @interface ZHCarWashingProcess ()
-@property (nonatomic, retain) ZHBoss            *boss;
-@property (nonatomic, retain) ZHAccountant      *accountant;
-@property (nonatomic, retain) NSMutableArray    *washers;
-@property (nonatomic, retain) ZHQueue           *carsQueue;
-@property (nonatomic, retain) ZHQueue           *washersQueue;
+@property (nonatomic, retain) ZHWorkersDispatcher *washersDispatcher;
+@property (nonatomic, retain) ZHWorkersDispatcher *accountansDispatcher;
+@property (nonatomic, retain) ZHWorkersDispatcher *bossDispatcher;
+
 
 - (void)initInfrastructure;
 
@@ -37,12 +46,9 @@ static const NSString *kZHWasherName = @"CarWasher";
 #pragma mark Deallocation / Initialisation
 
 - (void)dealloc {
- //   [self removeWorkersObservers];
-    self.boss = nil;
-    self.accountant = nil;
-    self.washers = nil;
-    self.carsQueue = nil;
-    self.washersQueue = nil;
+    self.washersDispatcher = nil;
+    self.accountansDispatcher = nil;
+    self.bossDispatcher = nil;
     
     [super dealloc];
 }
@@ -56,36 +62,33 @@ static const NSString *kZHWasherName = @"CarWasher";
 }
 
 - (void)initInfrastructure {
-    [self initWorkers];
-    [self initQueues];
-}
+    ZHWorkersFactory workersFactory = ^NSArray *(Class class, NSUInteger count, id observer, NSString *name) {
+        __block NSUInteger iterator = 0;
+        return [NSArray arrayWithObjectsCount:count block:^ {
+            ZHWorker *worker = [class processorWithName:[NSString stringWithFormat:@"%@%lu",
+                                                          name,
+                                                          (unsigned long)++iterator]];
+            
+            [worker addObserver:observer];
+            
+            return worker;
+            }];
+    };
 
-- (void)initWorkers {
-    self.washers = [NSMutableArray array];
-    ZHBoss *boss = [ZHBoss object];
-    boss.name = @"boss";
-    self.boss = boss;
-    ZHAccountant *accountant = [ZHAccountant object];
-    accountant.name = @"accountant";
-    self.accountant = accountant;
-    [accountant addObserver:boss];
-    
-    __block NSUInteger iterator = 0;
-    NSArray *washerObservers = @[accountant, self];
-    self.washers = [NSMutableArray arrayWithObjectsCount:kZHWashersCount block:^{
-        ZHCarWasher *washer = [ZHCarWasher object];
-        [washer addObservers:washerObservers];
-        washer.name = [NSString stringWithFormat:@"%@%lu", kZHWasherName, (unsigned long)iterator++];
-        
-        return washer;
-    }];
-}
+    self.bossDispatcher = [ZHWorkersDispatcher dispatcherWithProcessors:workersFactory([ZHBoss class],
+                                                                                       kZHBossCount,
+                                                                                       nil,
+                                                                                       kZHBossName)];
 
-- (void)initQueues {
-    ZHQueue *washersQueue = [ZHQueue object];
-    self.washersQueue = washersQueue;
-    [washersQueue enqueueObjects:self.washers];
-    self.carsQueue = [ZHQueue object];
+    self.accountansDispatcher = [ZHWorkersDispatcher dispatcherWithProcessors:workersFactory([ZHAccountant class],
+                                                                                             kZHAccountantsCount,
+                                                                                             self.bossDispatcher,
+                                                                                             kZHAccountantName)];
+
+    self.washersDispatcher = [ZHWorkersDispatcher dispatcherWithProcessors:workersFactory([ZHCarWasher class],
+                                                                                          kZHWashersCount,
+                                                                                          self.accountansDispatcher,
+                                                                                          kZHWasherName)];
 }
 
 #pragma mark -
@@ -95,23 +98,18 @@ static const NSString *kZHWasherName = @"CarWasher";
 
 - (void)washCar:(ZHCar *)car {
     if (car) {
-        ZHCarWasher *washer = [self.washersQueue dequeue];
-        if (washer) {
-            [washer processObject:car];
-        } else {
-            [self.carsQueue enqueue:car];
-        }
+        [self.washersDispatcher processObject:car];
     }
     
 }
 
-- (void)workerDidBecomeFree:(ZHWorker *)worker {
-    ZHCar *car = [self.carsQueue dequeue];
-    if (car) {
-        [worker processObject:car];
-    } else {
-        [self.washersQueue enqueue:worker];
-    }
-}
+//- (void)workerDidBecomeFree:(ZHWorker *)worker {
+//    ZHCar *car = [self.carsQueue dequeue];
+//    if (car) {
+//        [worker processObject:car];
+//    } else {
+//        [self.washersQueue enqueue:worker];
+//    }
+//}
 
 @end
