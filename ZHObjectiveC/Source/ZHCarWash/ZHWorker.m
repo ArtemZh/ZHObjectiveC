@@ -55,28 +55,27 @@
 }
 
 - (void)takeMoneyFromObject:(id<ZHMoneyTransferProtocol>)owner {
-    float money = owner.money;
-    [self receiveMoney:money];
-    
+    float money = 0;
     @synchronized (owner) {
+        money = owner.money;
         [owner giveMoney:money];
     }
     
-    
+    [self receiveMoney:money];
 }
 
 - (void)processObject:(id)object {
     @synchronized (self) {
         if (self.state == ZHWorkerStateFree) {
             self.state = ZHWorkerStateBusy;
-            [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
+            [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
         } else {
             [self.queue enqueue:object];
         }
     }
 }
 
-- (void)processingObjectInBackground:(id)object {
+- (void)processObjectInBackground:(id)object {
     NSLog(@"%@ performSelectorInBackground", self.name);
     [self performWorkWithObject:object];
     [self performSelectorOnMainThread:@selector(finishProcessingOnMainThreadWithObject:)
@@ -94,7 +93,7 @@
         if ([objectsQueue count] > 0 ) {
             id object = [objectsQueue dequeue];
             
-            [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
+            [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
         } else {
             [self finishProcessing];
         }
@@ -105,7 +104,7 @@
     id object = nil;
     if (worker.state == ZHWorkerStateReadyForProcessing && (object = [worker.queue dequeue])) {
         worker.state = ZHWorkerStateBusy;
-        [self performSelectorInBackground:@selector(processingObjectInBackground:) withObject:object];
+        [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
         
         return;
     }
@@ -147,7 +146,7 @@
     @synchronized (self) {
         if (state == ZHWorkerStateFree && self.queue.count) {
             [super setState:ZHWorkerStateBusy];
-            [self performSelectorInBackground:@selector(processingObjectInBackground:)
+            [self performSelectorInBackground:@selector(processObjectInBackground:)
                                    withObject:[self.queue dequeue]];
             
             return;
