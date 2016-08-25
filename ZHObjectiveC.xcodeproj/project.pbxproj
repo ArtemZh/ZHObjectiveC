@@ -76,8 +76,8 @@
 		ACD2C7FA1D197D8D002C38BD /* NSString+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZHExtension.h"; sourceTree = "<group>"; };
 		ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHCarWashingProcess.m; sourceTree = "<group>"; };
 		ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCarWashingProcess.h; sourceTree = "<group>"; };
-		ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHWorkersDispatcher.m; sourceTree = "<group>"; };
-		ACE74C801D636D42000530C7 /* ZHWorkersDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHWorkersDispatcher.h; sourceTree = "<group>"; };
+		ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ZHWorkersDispatcher.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		ACE74C801D636D42000530C7 /* ZHWorkersDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ZHWorkersDispatcher.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZHExtension.h"; sourceTree = "<group>"; };
 		ACFC33F01D0D8C0000B83075 /* NSObject+ZHExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZHExtension.m"; sourceTree = "<group>"; };
 		ACFC33F91D0DA64600B83075 /* ZHCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHCreature.h; sourceTree = "<group>"; };

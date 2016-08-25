@@ -19,8 +19,8 @@
 #import "ZHObservableObject.h"
 #import "ZHWorkersDispatcher.h"
 
-static const NSUInteger kZHWashersCount  = 1;
-static const NSUInteger kZHAccountantsCount = 1;
+static const NSUInteger kZHWashersCount  = 3;
+static const NSUInteger kZHAccountantsCount = 2;
 static const NSUInteger kZHBossCount = 1;
 
 static NSString *kZHWasherName       = @"CarWasher";
@@ -49,6 +49,7 @@ typedef NSArray *(^ZHWorkersFactory)(Class class, NSUInteger count, id observer,
     self.washersDispatcher = nil;
     self.accountansDispatcher = nil;
     self.bossDispatcher = nil;
+    [self removeAllProcessors];
     
     [super dealloc];
 }
@@ -103,13 +104,17 @@ typedef NSArray *(^ZHWorkersFactory)(Class class, NSUInteger count, id observer,
     
 }
 
-//- (void)workerDidBecomeFree:(ZHWorker *)worker {
-//    ZHCar *car = [self.carsQueue dequeue];
-//    if (car) {
-//        [worker processObject:car];
-//    } else {
-//        [self.washersQueue enqueue:worker];
-//    }
-//}
+- (void)removeAllProcessors {
+    void (^ZHRemoveObservers)(id collection, id observer) = ^(id collection, id observer) {
+        for (ZHWorker *processor in collection) {
+            [processor removeObserver:observer];
+        }
+    };
+    
+    ZHWorkersDispatcher *accountansDispatcher = self.accountansDispatcher;
+    
+    ZHRemoveObservers(accountansDispatcher.processors, @[self.bossDispatcher]);
+    ZHRemoveObservers(self.washersDispatcher.processors, @[accountansDispatcher]);
+}
 
 @end

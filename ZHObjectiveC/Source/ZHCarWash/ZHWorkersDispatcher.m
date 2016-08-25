@@ -57,6 +57,16 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSArray *)processors {
+    NSMutableArray *mutableProcessors = self.mutableProcessors;
+    @synchronized (mutableProcessors) {
+        return [[mutableProcessors copy] autorelease];
+    }
+}
+
+#pragma mark -
 #pragma mark Public implementations
 
 - (void)processObject:(id)object {
@@ -102,15 +112,27 @@
 }
 
 #pragma mark -
+#pragma mark Private implementations
+
+- (BOOL)containsProcessor:(id)processor {
+    return [self.processors containsObject:processor];
+}
+
+
+#pragma mark -
 #pragma mark ZHWorkersObserver methods
 
 - (void)workerDidBecomeFree:(ZHWorker *)processor {
-    [self.freeProcessors enqueue:processor];
-    [self processObject:[self.objectsForProcess dequeue]];
+    if ([self containsProcessor:processor]) {
+        [self.freeProcessors enqueue:processor];
+        [self processObject:[self.objectsForProcess dequeue]];
+    }
 }
 
 - (void)workerDidBecomeReadyForProcessing:(id)object {
-    [self processObject:object];
+    if (![self containsProcessor:object]) {
+        [self processObject:object];
+    }
 }
 
 

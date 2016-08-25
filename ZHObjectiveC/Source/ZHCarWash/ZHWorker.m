@@ -13,7 +13,7 @@
 
 @interface ZHWorker ()
 @property (nonatomic, assign) float         money;
-@property (nonatomic, retain) ZHQueue      *queue;
+//@property (nonatomic, retain) ZHQueue      *queue;
 
 - (void)finishProcessingOnMainThreadWithObject:(id)object;
 
@@ -31,14 +31,14 @@
 #pragma mark initialize / deallocate
 
 - (void)dealloc {
-    self.queue = nil;
+   // self.queue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-    self.queue = [ZHQueue object];
+   // self.queue = [ZHQueue object];
     
     return self;
 }
@@ -116,9 +116,6 @@
     ///
 }
 
-- (void)workerDidBecomeReadyForProcessing:(id)object {
-        [self processObject:object];
-}
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
@@ -135,19 +132,5 @@
             return [super selectorForState:state];
     }
 }
-
-//-(void)setState:(NSUInteger)state {
-//    @synchronized (self) {
-//        if (state == ZHWorkerStateFree && self.queue.count) {
-//            [super setState:ZHWorkerStateBusy];
-//            [self performSelectorInBackground:@selector(processObjectInBackground:)
-//                                   withObject:[self.queue dequeue]];
-//            
-//            return;
-//        }
-//        
-//        [super setState:state];
-//    }
-//}
 
 @end
