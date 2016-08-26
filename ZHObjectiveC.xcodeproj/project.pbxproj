@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC18A4501D09D3CD001A9D81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC18A44F1D09D3CD001A9D81 /* main.m */; };
+		AC2257BC1D70B22E001EEE1D /* ZHComplexDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2257BB1D70B22E001EEE1D /* ZHComplexDispatcher.m */; };
 		AC29CB3E1D38044000C5FD8B /* ZHObjectiveCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */; };
 		AC4389321D3D49EA00A4A833 /* ZHClusterAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC43892D1D3D49EA00A4A833 /* ZHClusterAlphabet.m */; };
 		AC4389331D3D49EA00A4A833 /* ZHRangeAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = AC43892F1D3D49EA00A4A833 /* ZHRangeAlphabet.m */; };
@@ -54,6 +55,8 @@
 		A68676910BC26FECC3CE51AF /* Pods-ZHObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveC/Pods-ZHObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
 		AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZHObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC18A44F1D09D3CD001A9D81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AC2257BB1D70B22E001EEE1D /* ZHComplexDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHComplexDispatcher.m; sourceTree = "<group>"; };
+		AC2257BD1D70B23F001EEE1D /* ZHComplexDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHComplexDispatcher.h; sourceTree = "<group>"; };
 		AC29CB3B1D38044000C5FD8B /* ZHObjectiveCTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZHObjectiveCTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZHObjectiveCTest.m; sourceTree = "<group>"; };
 		AC29CB3F1D38044000C5FD8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				AC91A4D91D21963700FAF721 /* ZHWorkersDelegate.h */,
 				ACE74C801D636D42000530C7 /* ZHWorkersDispatcher.h */,
 				ACE74C7E1D636D18000530C7 /* ZHWorkersDispatcher.m */,
+				AC2257BD1D70B23F001EEE1D /* ZHComplexDispatcher.h */,
+				AC2257BB1D70B22E001EEE1D /* ZHComplexDispatcher.m */,
 				ACD2C7FD1D1D84FA002C38BD /* ZHCarWashingProcess.h */,
 				ACD2C7FB1D1D84DD002C38BD /* ZHCarWashingProcess.m */,
 				ACFC34101D0DACB200B83075 /* ZHCar.h */,
@@ -477,6 +482,7 @@
 				ACFC34201D0DB14400B83075 /* ZHCarWasher.m in Sources */,
 				AC4389321D3D49EA00A4A833 /* ZHClusterAlphabet.m in Sources */,
 				ACFC34011D0DA64600B83075 /* ZHCreatureMale.m in Sources */,
+				AC2257BC1D70B22E001EEE1D /* ZHComplexDispatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

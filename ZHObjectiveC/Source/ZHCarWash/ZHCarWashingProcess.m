@@ -105,7 +105,7 @@ typedef NSArray *(^ZHWorkersFactory)(Class class, NSUInteger count, id observer,
 }
 
 - (void)removeAllProcessors {
-    void (^ZHRemoveObservers)(id collection, id observer) = ^(id collection, id observer) {
+    void (^removeObservers)(id collection, id observer) = ^(id collection, id observer) {
         for (ZHWorker *processor in collection) {
             [processor removeObserver:observer];
         }
@@ -113,8 +113,8 @@ typedef NSArray *(^ZHWorkersFactory)(Class class, NSUInteger count, id observer,
     
     ZHWorkersDispatcher *accountansDispatcher = self.accountansDispatcher;
     
-    ZHRemoveObservers(accountansDispatcher.processors, @[self.bossDispatcher]);
-    ZHRemoveObservers(self.washersDispatcher.processors, @[accountansDispatcher]);
+    removeObservers(accountansDispatcher.processors, @[self.bossDispatcher]);
+    removeObservers(self.washersDispatcher.processors, @[accountansDispatcher]);
 }
 
 @end

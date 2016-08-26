@@ -14,7 +14,7 @@
 @interface ZHWorkersDispatcher ()
 
 @property (nonatomic, retain) NSMutableArray    *mutableProcessors;
-@property (nonatomic, retain) ZHQueue           *objectsForProcess;
+@property (nonatomic, retain) ZHQueue           *objectsQueue;
 @property (nonatomic, retain) ZHQueue           *freeProcessors;
 
 @end
@@ -32,7 +32,7 @@
 #pragma mark Initializations / Deallocations
 
 - (void)dealloc {
-    self.objectsForProcess = nil;
+    self.objectsQueue = nil;
     self.freeProcessors = nil;
     
     [self removeProcessors:self.processors];
@@ -44,14 +44,10 @@
 - (instancetype)initWithProcessors:(NSArray *)processors {
     self = [super init];
     
-    self.objectsForProcess = [ZHQueue object];
+    self.objectsQueue = [ZHQueue object];
     
     self.mutableProcessors = [NSMutableArray array];
     [self addProcessors:processors];
-    
-    ZHQueue *freeProcessors = [ZHQueue object];
-    self.freeProcessors = freeProcessors;
-    [freeProcessors enqueueObjects:processors];
     
     return self;
 }
@@ -75,7 +71,7 @@
         if (worker) {
             [worker processObject:object];
         } else {
-            [self.objectsForProcess enqueue:object];
+            [self.objectsQueue enqueue:object];
         }
     }
 }
@@ -85,6 +81,7 @@
     NSMutableArray *mutableProcessors = self.mutableProcessors;
     @synchronized (mutableProcessors) {
         [mutableProcessors addObject:processor];
+        
     }
 }
 
@@ -100,6 +97,10 @@
             [processor addObserver:self];
             [self addProcessor:processor];
         }
+        
+        ZHQueue *freeProcessors = [ZHQueue object];
+        self.freeProcessors = freeProcessors;
+        [freeProcessors enqueueObjects:processors];
     }
 }
 
@@ -125,7 +126,7 @@
 - (void)workerDidBecomeFree:(ZHWorker *)processor {
     if ([self containsProcessor:processor]) {
         [self.freeProcessors enqueue:processor];
-        [self processObject:[self.objectsForProcess dequeue]];
+        [self processObject:[self.objectsQueue dequeue]];
     }
 }
 

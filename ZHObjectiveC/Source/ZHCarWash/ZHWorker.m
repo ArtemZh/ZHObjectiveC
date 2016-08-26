@@ -31,14 +31,12 @@
 #pragma mark initialize / deallocate
 
 - (void)dealloc {
-   // self.queue = nil;
     
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
-   // self.queue = [ZHQueue object];
     
     return self;
 }
