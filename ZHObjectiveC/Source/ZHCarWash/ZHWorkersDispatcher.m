@@ -17,6 +17,8 @@
 @property (nonatomic, retain) ZHQueue           *objectsQueue;
 @property (nonatomic, retain) ZHQueue           *freeProcessors;
 
+- (void)addProcessors:(NSArray *)processors;
+
 @end
 
 @implementation ZHWorkersDispatcher
@@ -82,8 +84,12 @@
     @synchronized (mutableProcessors) {
         [mutableProcessors addObject:processor];
         
+        ZHQueue *freeProcessors = [ZHQueue object];
+        self.freeProcessors = freeProcessors;
+        [freeProcessors enqueueObjects:mutableProcessors];
+        
     }
-}
+} 
 
 - (void)removeProcessor:(id)processor {
     NSMutableArray *mutableProcessors = self.mutableProcessors;
@@ -97,10 +103,6 @@
             [processor addObserver:self];
             [self addProcessor:processor];
         }
-        
-        ZHQueue *freeProcessors = [ZHQueue object];
-        self.freeProcessors = freeProcessors;
-        [freeProcessors enqueueObjects:processors];
     }
 }
 

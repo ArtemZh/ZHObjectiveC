@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ZHComplexDispatcher : NSObject
-@property (nonatomic, readonly, getter=isWorking) BOOL working;
+@property (nonatomic, readonly) BOOL sendingCars;
 
 + (instancetype)disptcherWithComplex:(id)complex;
 

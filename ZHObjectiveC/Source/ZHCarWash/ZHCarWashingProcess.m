@@ -19,7 +19,7 @@
 #import "ZHObservableObject.h"
 #import "ZHWorkersDispatcher.h"
 
-static const NSUInteger kZHWashersCount  = 3;
+static const NSUInteger kZHWashersCount  = 4;
 static const NSUInteger kZHAccountantsCount = 2;
 static const NSUInteger kZHBossCount = 1;
 

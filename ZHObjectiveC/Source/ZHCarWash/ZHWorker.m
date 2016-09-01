@@ -10,10 +10,11 @@
 #import "ZHRandom.h"
 #import "ZHQueue.h"
 #import "NSObject+ZHExtension.h"
+#import "ZHGCD.h"
 
 @interface ZHWorker ()
 @property (nonatomic, assign) float         money;
-//@property (nonatomic, retain) ZHQueue      *queue;
+
 
 - (void)finishProcessingOnMainThreadWithObject:(id)object;
 
@@ -75,14 +76,26 @@
     [self receiveMoney:money];
 }
 
+//- (void)processObject:(id)object {
+//    @synchronized (self) {
+//        if (self.state == ZHWorkerStateFree) {
+//            self.state = ZHWorkerStateBusy;
+//            [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
+//        }
+//    }
+//}
+
 - (void)processObject:(id)object {
-    @synchronized (self) {
-        if (self.state == ZHWorkerStateFree) {
-            self.state = ZHWorkerStateBusy;
-            [self performSelectorInBackground:@selector(processObjectInBackground:) withObject:object];
-        }
-    }
+    self.state = ZHWorkerStateBusy;
+    ZHPerformAsyncBlockOnBackgroundQueue (^{
+        [self performWorkWithObject:object];
+        ZHPerformAsyncBlockOnMainQueue(^{
+            [self finishProcessingObject:object];
+            [self finishProcessing];
+        });
+    });
 }
+
 
 - (void)processObjectInBackground:(id)object {
     NSLog(@"%@ performSelectorInBackground", self.name);

@@ -12,7 +12,7 @@
 
 - (void)washCar:(ZHCar *)car {
     [self takeMoneyFromObject:car];
-    NSLog(@"Car washed  %f", self.money);
+    NSLog(@"Car washed  %f by %@ ", self.money, self.name);
 }
 
 - (void)performWorkWithObject:(id)object{

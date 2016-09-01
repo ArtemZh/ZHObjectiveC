@@ -7,25 +7,31 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "ZHCreature.h"
 #import "ZHCreatureTest.h"
-#import "NSString+ZHExtension.h"
+#import "ZHComplexDispatcher.h"
 #import "ZHCarWashingProcess.h"
 #import "ZHQueue.h"
 
-static const NSUInteger kZHCarsCount = 100;
+#import "NSString+ZHExtension.h"
+#import "NSObject+ZHExtension.h"
+
+//static const NSUInteger kZHCarsCount = 100;
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        
-        
-        ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
-        
-        for (NSUInteger count = 1; count < kZHCarsCount+1; count++) {
-            [complex washCar:[ZHCar object]];
-            NSLog(@"add car to queue %lu", count);
-        }
-        
+        ZHComplexDispatcher *complex = [ZHComplexDispatcher disptcherWithComplex:[ZHCarWashingProcess object]];
+        [complex washCars];
+        [complex setworking:YES];
+
+//        ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
+//        
+//        for (NSUInteger count = 1; count < kZHCarsCount+1; count++) {
+//            [complex washCar:[ZHCar object]];
+//            NSLog(@"add car to queue %lu", count);
+//        }
+
         [[NSRunLoop mainRunLoop] run];
         
         
