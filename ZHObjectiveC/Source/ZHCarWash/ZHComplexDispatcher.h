@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ZHComplexDispatcher : NSObject
-@property (nonatomic, readonly) BOOL sendingCars;
+@property (nonatomic, readonly, getter=isWorking) BOOL working;
 
-+ (instancetype)disptcherWithComplex:(id)complex;
-
-- (void)setworking:(BOOL) working;
++ (instancetype)disptcherWithComplex:(id)carWashComplex;
 
 - (void)washCars;
+
+-(void)setWorking:(BOOL)working;
 
 @end

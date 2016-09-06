@@ -79,14 +79,12 @@
 }
 
 - (void)addProcessor:(id)processor {
-    
     NSMutableArray *mutableProcessors = self.mutableProcessors;
     @synchronized (mutableProcessors) {
         [mutableProcessors addObject:processor];
+        [processor addObserver:self];
         
-        ZHQueue *freeProcessors = [ZHQueue object];
-        self.freeProcessors = freeProcessors;
-        [freeProcessors enqueueObjects:mutableProcessors];
+        [self.freeProcessors enqueueObjects:mutableProcessors];
         
     }
 } 
@@ -94,13 +92,14 @@
 - (void)removeProcessor:(id)processor {
     NSMutableArray *mutableProcessors = self.mutableProcessors;
     [mutableProcessors removeObject:processor];
+    [processor removeObserver:self];
+    
 }
 
 - (void)addProcessors:(NSArray *)processors {
     @synchronized (self.mutableProcessors) {
         for (ZHWorker *processor in processors) {
-            
-            [processor addObserver:self];
+
             [self addProcessor:processor];
         }
     }
@@ -109,7 +108,6 @@
 - (void)removeProcessors:(NSArray *)processors {
     for (ZHWorker *processor in processors) {
         
-        [processor removeObserver:self];
         [self removeProcessor:processor];
     }
 }

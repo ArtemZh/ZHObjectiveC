@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1267F51D7F04C40030E921 /* NSTimer+ZHExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F41D7F04C40030E921 /* NSTimer+ZHExtensions.m */; };
+		AC1267F81D7F07AE0030E921 /* ZHTimerSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = AC1267F71D7F07AE0030E921 /* ZHTimerSupport.m */; };
 		AC18A4501D09D3CD001A9D81 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC18A44F1D09D3CD001A9D81 /* main.m */; };
 		AC2257BC1D70B22E001EEE1D /* ZHComplexDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AC2257BB1D70B22E001EEE1D /* ZHComplexDispatcher.m */; };
 		AC29CB3E1D38044000C5FD8B /* ZHObjectiveCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AC29CB3D1D38044000C5FD8B /* ZHObjectiveCTest.m */; };
@@ -54,6 +56,10 @@
 		5DB025FA84A6F0ACF1BD997C /* libPods-ZHObjectiveCTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZHObjectiveCTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A998EF43074D19FA13467EF /* Pods-ZHObjectiveCTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveCTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveCTest/Pods-ZHObjectiveCTest.release.xcconfig"; sourceTree = "<group>"; };
 		A68676910BC26FECC3CE51AF /* Pods-ZHObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZHObjectiveC.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZHObjectiveC/Pods-ZHObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
+		AC1267F31D7F04860030E921 /* NSTimer+ZHExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+ZHExtensions.h"; sourceTree = "<group>"; };
+		AC1267F41D7F04C40030E921 /* NSTimer+ZHExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+ZHExtensions.m"; sourceTree = "<group>"; };
+		AC1267F61D7F079F0030E921 /* ZHTimerSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTimerSupport.h; sourceTree = "<group>"; };
+		AC1267F71D7F07AE0030E921 /* ZHTimerSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTimerSupport.m; sourceTree = "<group>"; };
 		AC18A44C1D09D3CD001A9D81 /* ZHObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZHObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC18A44F1D09D3CD001A9D81 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC2257BB1D70B22E001EEE1D /* ZHComplexDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHComplexDispatcher.m; sourceTree = "<group>"; };
@@ -212,6 +218,10 @@
 				AC91A4D61D21191900FAF721 /* ZHQueue.m */,
 				ACFC34211D0DB2F900B83075 /* ZHRandom.h */,
 				ACFC34221D0DB2F900B83075 /* ZHRandom.m */,
+				AC1267F31D7F04860030E921 /* NSTimer+ZHExtensions.h */,
+				AC1267F41D7F04C40030E921 /* NSTimer+ZHExtensions.m */,
+				AC1267F61D7F079F0030E921 /* ZHTimerSupport.h */,
+				AC1267F71D7F07AE0030E921 /* ZHTimerSupport.m */,
 				AC91A4DA1D219D2E00FAF721 /* NSArray+ZHExtension.h */,
 				AC91A4DB1D219E0D00FAF721 /* NSArray+ZHExtension.m */,
 				ACFC33EF1D0D8C0000B83075 /* NSObject+ZHExtension.h */,
@@ -467,12 +477,14 @@
 			files = (
 				ACD2C7FC1D1D84DD002C38BD /* ZHCarWashingProcess.m in Sources */,
 				ACD2C7F91D197D67002C38BD /* NSString+ZHExtension.m in Sources */,
+				AC1267F51D7F04C40030E921 /* NSTimer+ZHExtensions.m in Sources */,
 				ACFC341D1D0DB10700B83075 /* ZHAccountant.m in Sources */,
 				AC91A4D71D21191900FAF721 /* ZHQueue.m in Sources */,
 				ACFC33F11D0D8C0000B83075 /* NSObject+ZHExtension.m in Sources */,
 				AC4389371D3D4B5100A4A833 /* ZHObservableObject.m in Sources */,
 				ACFC33FF1D0DA64600B83075 /* ZHCreature.m in Sources */,
 				AC18A4501D09D3CD001A9D81 /* main.m in Sources */,
+				AC1267F81D7F07AE0030E921 /* ZHTimerSupport.m in Sources */,
 				ACE74C7F1D636D18000530C7 /* ZHWorkersDispatcher.m in Sources */,
 				AC4389331D3D49EA00A4A833 /* ZHRangeAlphabet.m in Sources */,
 				ACFC34001D0DA64600B83075 /* ZHCreatureFemale.m in Sources */,

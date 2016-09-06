@@ -23,8 +23,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         ZHComplexDispatcher *complex = [ZHComplexDispatcher disptcherWithComplex:[ZHCarWashingProcess object]];
         [complex washCars];
-        [complex setworking:YES];
-
+       // [complex setWorking:YES];
+        complex.working = YES;
 //        ZHCarWashingProcess *complex = [ZHCarWashingProcess object];
 //        
 //        for (NSUInteger count = 1; count < kZHCarsCount+1; count++) {
