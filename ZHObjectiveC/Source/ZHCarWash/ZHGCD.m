@@ -11,7 +11,7 @@
 #pragma mark -
 #pragma mark Privat declarations
 
-void ZHPerformBlockOnMainQueueWithTypeAndBlock(ZHBlockExecutionType type, ZHBlock block);
+void ZHPerformBlockOnMainQueueWithBlock (ZHBlock block);
 
 void ZHPefromBlockWithQueueAndType(ZHBlockExecutionType type, dispatch_queue_t queue, ZHBlock block);
 
@@ -22,24 +22,20 @@ void ZHPerformAsyncBlockOnMainQueue(ZHBlock block) {
     if ([NSThread isMainThread]) {
         block();
     } else {
-        ZHDispatchSyncBlockOnQueueWithType(ZHDispatchQueuePriorityLow, block);
+        ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
     }
 }
 
 void ZHPerformSyncBlockOnMainQueue(ZHBlock block) {
-    ZHPerformBlockOnMainQueueWithTypeAndBlock(ZHBlockExecutionSynchronous, block);
+    ZHDispatchSyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
 }
 
 void ZHPerformAsyncBlockOnBackgroundQueue(ZHBlock block) {
-    ZHPefromBlockWithQueueAndType(ZHBlockExecutionAsynchronous,
-                                   ZHDisptchQueueWithPriorityType(ZHDispatchQueuePriorityBackground),
-                                   block);
+    ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityBackground, block);
 }
 
 void ZHPerformSyncBlockOnBackgroundQueue(ZHBlock block) {
-    ZHPefromBlockWithQueueAndType(ZHBlockExecutionSynchronous,
-                                   ZHDisptchQueueWithPriorityType(ZHDispatchQueuePriorityBackground),
-                                   block);
+    ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityBackground, block);
 }
 
 void ZHPerformAsyncBlockOnLowQueue(ZHBlock block) {
