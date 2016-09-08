@@ -9,6 +9,7 @@
 #import "ZHTimerSupport.h"
 
 @interface ZHTimerSupport ()
+@property (nonatomic, copy)  ZHTimerSupportingBlock   block;
 
 - (instancetype)initWithBlock:(void(^)())block;
 
@@ -43,7 +44,7 @@
 #pragma mark -
 #pragma mark Public implementations
 
-- (void)startTimer:(NSTimer *)timer {
+- (void)onTimer:(NSTimer *)timer {
     ZHTimerSupportingBlock block = self.block;
     
     block();

@@ -50,7 +50,7 @@
     
     self.mutableProcessors = [NSMutableArray array];
     [self addProcessors:processors];
-    
+    [self.freeProcessors enqueueObjects:self.mutableProcessors];
     return self;
 }
 
@@ -84,15 +84,16 @@
         [mutableProcessors addObject:processor];
         [processor addObserver:self];
         
-        [self.freeProcessors enqueueObjects:mutableProcessors];
-        
     }
 } 
 
 - (void)removeProcessor:(id)processor {
     NSMutableArray *mutableProcessors = self.mutableProcessors;
-    [mutableProcessors removeObject:processor];
-    [processor removeObserver:self];
+    @synchronized (mutableProcessors) {
+        [mutableProcessors removeObject:processor];
+        [processor removeObserver:self];
+        
+    }
     
 }
 

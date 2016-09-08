@@ -18,16 +18,16 @@ void ZHPefromBlockWithQueueAndType(ZHBlockExecutionType type, dispatch_queue_t q
 #pragma mark -
 #pragma mark Public implementations
 
-void ZHPerformAsyncBlockOnMainQueue(ZHBlock block) {
+void ZHPerformSyncBlockOnMainQueue(ZHBlock block) {
     if ([NSThread isMainThread]) {
         block();
     } else {
-        ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
+        ZHDispatchSyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
     }
 }
 
-void ZHPerformSyncBlockOnMainQueue(ZHBlock block) {
-    ZHDispatchSyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
+void ZHPerformAsyncBlockOnMainQueue(ZHBlock block) {
+    ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityMain, block);
 }
 
 void ZHPerformAsyncBlockOnBackgroundQueue(ZHBlock block) {
@@ -35,7 +35,7 @@ void ZHPerformAsyncBlockOnBackgroundQueue(ZHBlock block) {
 }
 
 void ZHPerformSyncBlockOnBackgroundQueue(ZHBlock block) {
-    ZHDispatchAsyncBlockOnQueueWithType(ZHDispatchQueuePriorityBackground, block);
+    ZHDispatchSyncBlockOnQueueWithType(ZHDispatchQueuePriorityBackground, block);
 }
 
 void ZHPerformAsyncBlockOnLowQueue(ZHBlock block) {

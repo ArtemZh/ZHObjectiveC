@@ -12,10 +12,9 @@
 typedef void(^ZHTimerSupportingBlock)(void);
 
 @interface ZHTimerSupport : NSObject
-@property (nonatomic, copy)     ZHTimerSupportingBlock      block;
 
 + (instancetype)objectWithBlock:(void(^)())block;
 
-- (void)startTimer:(NSTimer *)timer;
+- (void)onTimer:(NSTimer *)timer;
 
 @end

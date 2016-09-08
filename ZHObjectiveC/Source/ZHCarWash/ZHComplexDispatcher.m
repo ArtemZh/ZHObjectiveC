@@ -24,7 +24,6 @@ static const uint8_t kZHInterval = 4;
 @interface ZHComplexDispatcher ()
 @property (nonatomic, retain) ZHCarWashingProcess       *carWashComplex;
 @property (nonatomic, assign) NSTimer                   *timer;
-@property (nonatomic, assign) BOOL                      sendingCars;
 
 - (instancetype)initWithComplex:(ZHCarWashingProcess *)carWashComplex;
 
@@ -103,14 +102,6 @@ static const uint8_t kZHInterval = 4;
 - (void)stopTimer {
     self.timer = nil;
 }
-
-//- (void)startTimer {
-//    self.timer = [NSTimer scheduledTimerWithTimeInterval:kZHInterval
-//                                                  target:self
-//                                                selector:@selector(washCars)
-//                                                userInfo:nil
-//                                                 repeats:YES];
-//}
 
 
 - (void)startTimer {
