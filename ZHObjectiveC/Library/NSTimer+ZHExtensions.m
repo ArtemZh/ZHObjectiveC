@@ -37,6 +37,9 @@ typedef void (^ZHBlock)(void);
 //}
 
 + (instancetype)timerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats block:(void(^)())block {
+    if (!block) {
+        return nil;
+    }
     
     id timerSupport = [ZHTimerSupport objectWithBlock:block];
     
@@ -60,10 +63,5 @@ typedef void (^ZHBlock)(void);
     
     return timer;
 }
-
-
-//- (void)addTimer:(NSTimer *)timer
-//         forMode:(NSRunLoopMode)mode;
-
 
 @end
