@@ -47,10 +47,10 @@
     self = [super init];
     
     self.objectsQueue = [ZHQueue object];
-    
+    self.freeProcessors = [ZHQueue object];
     self.mutableProcessors = [NSMutableArray array];
     [self addProcessors:processors];
-    [self.freeProcessors enqueueObjects:self.mutableProcessors];
+    
     return self;
 }
 
@@ -83,6 +83,7 @@
     @synchronized (mutableProcessors) {
         [mutableProcessors addObject:processor];
         [processor addObserver:self];
+        [self.freeProcessors enqueue:processor];
         
     }
 } 
@@ -92,7 +93,7 @@
     @synchronized (mutableProcessors) {
         [mutableProcessors removeObject:processor];
         [processor removeObserver:self];
-        
+        [self.freeProcessors dequeue:processor];
     }
     
 }
