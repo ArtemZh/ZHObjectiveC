@@ -16,10 +16,12 @@
 }
 
 - (void)performWorkWithObject:(id)object{
+    NSLog(@"Car will wash  %f by %@ ", self.money, self.name);
     [self washCar:object];
 }
 
 - (void)finishProcessingObject:(ZHCar *)car {
+    NSLog(@"Car wash by %@ ", self.name);
     car.status = ZHCarClean;
 }
 
